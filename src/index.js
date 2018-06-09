@@ -1,18 +1,16 @@
 import Discord from 'discord.js';
-import config from './config.json';
 import secrets from '../secrets.json';
-import messageHandler from './messageHandler';
+import MessageHandler from './messageHandler';
 
 const client = new Discord.Client();
-const prefix = config.prefix;
+const messageHandler = new MessageHandler();
 
 client.on('ready', () => {
     console.log('Bot connected succesfully!');
 });
 
-
 client.on('message', (message) => {
-    messageHandler(message);
+    messageHandler.handleMessage(message);
 });
 
 client.login(secrets.token);

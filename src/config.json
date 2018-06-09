@@ -1,3 +1,7 @@
 {
-    "prefix": "!"
+    "prefix": "!",
+    "restrictedCommands": {
+        "prune": ["Senpai", "TestRole"],
+        "nope": ["TestRole"]
+    }
 }
