@@ -4,12 +4,14 @@
   "description": "Discord bot",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon src/index.js --exec ./node_modules/.bin/babel-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sidaroth (Christian Holt)",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.3.2"
+    "discord.js": "^11.3.2",
+    "nodemon": "^1.17.5"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
