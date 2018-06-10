@@ -1,12 +1,3 @@
 {
-    "prefix": "!",
-    "restrictedCommands": {
-        "prune": ["Senpai"],
-        "testcommand": ["TestRole", "NonExistantRole123"]
-    },
-    "descriptions": {
-        "hi": "The bot greets you.",
-        "prune": "Admin restricted command pruning a given number of messages in the channel (1-50 at a time).",
-        "help": "Provides a description of what a command does."
-    }
+    "prefix": "!"
 }

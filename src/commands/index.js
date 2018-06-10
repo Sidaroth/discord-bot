@@ -1,10 +1,6 @@
-/**
- * @namespace commands
- * @memberof Commands
- */
-
-import prune from './prune';
 import hi from './hi';
-import help from './help';
+import prune from './prune';
+// import help from './help';
 
-export { prune, hi, help };
+const commands = [hi, prune];
+export default commands;
