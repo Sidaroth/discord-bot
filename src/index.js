@@ -4,6 +4,7 @@ import messageHandler from './messageHandler';
 import commands from './commands';
 
 const client = new Discord.Client();
+const cooldowns = new Discord.Collection();
 client.commands = new Discord.Collection();
 
 // Set up all exported commands from the commands folder.
@@ -16,7 +17,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-    messageHandler(client, message);
+    messageHandler(client, message, cooldowns);
 });
 
 client.login(secrets.token);

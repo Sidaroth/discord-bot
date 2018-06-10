@@ -1,3 +1,4 @@
+import Discord from 'discord.js';
 import config from './config.json';
 
 function isAllowedToExecute(member, command) {
@@ -16,15 +17,42 @@ function isAllowedToExecute(member, command) {
     return allowed;
 }
 
-const messageHandler = function messageHandlerFunc(client, message) {
+const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
     const args = message.content.slice(config.prefix.length).split(/ +/);
     const commandKey = args.shift().toLowerCase();
-
     if (!client.commands.has(commandKey)) return;
+
     const command = client.commands.get(commandKey);
+    if (command.guildOnly && message.channel.type !== 'text') {
+        message.reply("I can't execute that command in DMs");
+        return;
+    }
+
     if (!isAllowedToExecute(message.member, command)) return;
+
+    if (!cooldowns.has(commandKey)) {
+        cooldowns.set(commandKey, new Discord.Collection());
+    }
+
+    const now = Date.now();
+    const timestamps = cooldowns.get(command.name);
+    const cooldownAmount = (command.cooldown || 3) * 1000;
+
+    if (!timestamps.has(message.author.id)) {
+        timestamps.set(message.author.id, now);
+        setTimeout(() => {
+            timestamps.delete(message.author.id);
+        }, cooldownAmount);
+    } else {
+        const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+        timestamps.set(message.author.id, now);
+        setTimeout(() => {
+            timestamps.delete(message.author.id);
+        }, cooldownAmount);
+    }
 
     try {
         command.execute(message, args);

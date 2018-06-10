@@ -2,6 +2,10 @@ module.exports = {
     name: 'prune',
     description: 'Admin restricted command pruning a given number of messages in the channel (1-50 at a time).',
     roleRestriction: ['Senpai'],
+    requiresArgs: true,
+    guildOnly: true,
+    usage: '<amount>',
+    cooldown: 5,
     execute(message, args) {
         const amount = parseInt(args[0]);
         if (Number.isNaN(amount)) {
