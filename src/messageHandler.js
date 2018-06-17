@@ -22,9 +22,10 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
 
     const args = message.content.slice(config.prefix.length).split(/ +/);
     const commandKey = args.shift().toLowerCase();
-    if (!client.commands.has(commandKey)) return;
+    const command = client.commands.get(commandKey) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandKey));
 
-    const command = client.commands.get(commandKey);
+    if (!command) return;
+
     if (command.guildOnly && message.channel.type !== 'text') {
         message.reply("I can't execute that command in DMs");
         return;

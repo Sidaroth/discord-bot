@@ -1,6 +1,8 @@
+import avatar from './avatar';
+import help from './help';
 import hi from './hi';
 import prune from './prune';
-// import help from './help';
+import embedtest from './embedtest';
 
-const commands = [hi, prune];
+const commands = [avatar, embedtest, help, hi, prune];
 export default commands;
