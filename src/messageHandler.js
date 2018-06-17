@@ -32,33 +32,29 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
 
     if (!isAllowedToExecute(message.member, command)) return;
 
-    if (!cooldowns.has(commandKey)) {
-        cooldowns.set(commandKey, new Discord.Collection());
+    if (!cooldowns.has(command.name)) {
+        cooldowns.set(command.name, new Discord.Collection());
     }
 
     const now = Date.now();
     const timestamps = cooldowns.get(command.name);
     const cooldownAmount = (command.cooldown || 3) * 1000;
 
-    if (!timestamps.has(message.author.id)) {
-        timestamps.set(message.author.id, now);
-        setTimeout(() => {
-            timestamps.delete(message.author.id);
-        }, cooldownAmount);
-    } else {
+    if (timestamps.has(message.author.id)) {
         const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-
-        timestamps.set(message.author.id, now);
-        setTimeout(() => {
-            timestamps.delete(message.author.id);
-        }, cooldownAmount);
+        if (now < expirationTime) {
+            return; // still on cooldown.
+        }
     }
+
+    timestamps.set(message.author.id, now);
+    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
     try {
         command.execute(message, args);
     } catch (error) {
         console.error(error);
-        message.channel.send('There was an error trying to execute that command. Notify admin.');
+        message.channel.send('There was an error trying to execute that command. Notify admin. Please provide a timestamp (or screenshot) of the event if possible.');
     }
 };
 
