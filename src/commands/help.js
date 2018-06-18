@@ -12,7 +12,7 @@ module.exports = {
         if (!args.length) {
             response.push("Here's a list of all available commands: ");
             response.push(commands.map(command => command.name).join(', '));
-            response.push(`\nYou can send \`${config.prefix}help ${this.usage}\` to get info about a specific command`);
+            response.push(`\nYou can send \`${config.prefix}help ${this.usage}\` to get info about a specific command. I also work in DMs!`);
 
             // DM (Can fail if the user has blocked the bot, or has disabled DMs for privacy reasons etc. We need to catch the error in that case.)
             return message.author
@@ -26,8 +26,8 @@ module.exports = {
                     message.reply("It seems like I can't DM you! Do you have DMs disabled?");
                 });
         } else {
-            const commandName = args[0].toLowerCase();
-            const command = commands.get(commandName || commands.find(c => c.aliases && c.aliases.includes(commandName)));
+            const commandKey = args.shift().toLowerCase();
+            const command = commands.get(commandKey) || commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandKey));
 
             if (!command) {
                 return message.reply("That doesn't seem to be a valid command. Try `!help` to see a list of valid commands.");
