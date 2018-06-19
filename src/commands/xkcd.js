@@ -9,8 +9,16 @@ module.exports = {
     execute(message, args) {
         const numberOfComics = 2008;
         let number = parseInt(args.shift());
-        if (number == null || Number.isNaN(number)) number = getRandomInt(1, numberOfComics);
+        let response = '';
+        if (number == null || Number.isNaN(number)) {
+            response += 'Random XKCD coming up: ';
+            number = getRandomInt(1, numberOfComics);
+        } else {
+            response += `XKCD ${number} coming up: `;
+        }
 
-        message.channel.send(`XKCD comic ${number} coming up: https://xkcd.com/${number}/`);
+        response += `https://xkcd.com/${number}/`;
+
+        message.channel.send(response);
     },
 };
