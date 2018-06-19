@@ -13,6 +13,7 @@ commands.forEach((command) => {
 });
 
 client.on('ready', () => {
+    client.user.setActivity('Try !help');
     console.log('Bot connected succesfully!');
 });
 
