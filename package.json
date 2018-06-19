@@ -1,32 +1,33 @@
 {
-  "name": "discord-bot",
-  "version": "1.0.0",
-  "description": "Discord bot",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon src/index.js --exec ./node_modules/.bin/babel-node",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Sidaroth (Christian Holt)",
-  "license": "ISC",
-  "dependencies": {
-    "babel-eslint": "^8.2.3",
-    "discord.js": "^11.3.2",
-    "nodemon": "^1.17.5"
-  },
-  "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^4.2.2",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
-    "mocha": "^5.2.0"
-  }
+    "name": "discord-bot",
+    "version": "1.0.0",
+    "description": "Discord bot",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon src/index.js --exec ./node_modules/.bin/babel-node",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Sidaroth (Christian Holt)",
+    "license": "ISC",
+    "dependencies": {
+        "babel-eslint": "^8.2.3",
+        "discord.js": "^11.3.2",
+        "nodemon": "^1.17.5",
+        "snekfetch": "^4.0.4"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-preset-env": "^1.7.0",
+        "babel-register": "^6.26.0",
+        "eslint": "^4.19.1",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-node": "^4.2.2",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "mocha": "^5.2.0"
+    }
 }

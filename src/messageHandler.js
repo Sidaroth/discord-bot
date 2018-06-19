@@ -31,6 +31,11 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
         return;
     }
 
+    if (command.requiresArgs && !args.length) {
+        message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+        return;
+    }
+
     if (!isAllowedToExecute(message.member, command)) return;
 
     if (!cooldowns.has(command.name)) {
