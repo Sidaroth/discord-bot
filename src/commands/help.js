@@ -10,8 +10,18 @@ module.exports = {
         const { commands } = message.client;
 
         if (!args.length) {
-            response.push("Here's a list of all available commands: ");
-            response.push(commands.map(command => command.name).join(', '));
+            response.push("Here's a list of all available commands and *(aliases)*: ");
+            const commTexts = commands
+                .map((command) => {
+                    let text = `${command.name}`;
+                    if (command.aliases) {
+                        text += ` *(${command.aliases.join()})*`;
+                    }
+
+                    return text;
+                })
+                .join(', ');
+            response.push(commTexts);
             response.push(`\nYou can send \`${config.prefix}help ${this.usage}\` to get info about a specific command. I also work in DMs!`);
 
             // DM (Can fail if the user has blocked the bot, or has disabled DMs for privacy reasons etc. We need to catch the error in that case.)
