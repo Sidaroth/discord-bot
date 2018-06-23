@@ -1,3 +1,4 @@
+import kitsu from './kitsu';
 import avatar from './avatar';
 import cat from './cat';
 import citation from './citation';
@@ -12,6 +13,6 @@ import xkcd from './xkcd';
 // temporary
 import embedtest from './embedtest';
 
-const commands = [avatar, cat, citation, dog, embedtest, fizzbuzz, help, hi, prune, urban, xkcd];
+const commands = [avatar, cat, citation, dog, embedtest, fizzbuzz, help, hi, kitsu, prune, urban, xkcd];
 
 export default commands;

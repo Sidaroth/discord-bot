@@ -15,7 +15,7 @@ module.exports = {
                 .map((command) => {
                     let text = `${command.name}`;
                     if (command.aliases) {
-                        text += ` *(${command.aliases.join()})*`;
+                        text += ` *(${command.aliases.join(', ')})*`;
                     }
 
                     return text;

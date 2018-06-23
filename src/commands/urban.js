@@ -1,7 +1,6 @@
 import Discord from 'discord.js';
 import snekfetch from 'snekfetch';
-
-const trim = (str, max) => (str.length > max ? `${str.slice(0, max - 3)}...` : str);
+import trim from '../utils/trim';
 
 module.exports = {
     name: 'urban',
