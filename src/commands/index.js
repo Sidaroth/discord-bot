@@ -10,9 +10,6 @@ import prune from './prune';
 import urban from './urban';
 import xkcd from './xkcd';
 
-// temporary
-import embedtest from './embedtest';
-
-const commands = [avatar, cat, citation, dog, embedtest, fizzbuzz, help, hi, kitsu, prune, urban, xkcd];
+const commands = [avatar, cat, citation, dog, fizzbuzz, help, hi, kitsu, prune, urban, xkcd];
 
 export default commands;
