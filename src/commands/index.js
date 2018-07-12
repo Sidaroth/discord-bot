@@ -7,9 +7,10 @@ import fizzbuzz from './fizzbuzz';
 import help from './help';
 import hi from './hi';
 import prune from './prune';
+import racist from './racist';
 import urban from './urban';
 import xkcd from './xkcd';
 
-const commands = [avatar, cat, citation, dog, fizzbuzz, help, hi, kitsu, prune, urban, xkcd];
+const commands = [avatar, cat, citation, dog, fizzbuzz, help, hi, kitsu, prune, racist, urban, xkcd];
 
 export default commands;
