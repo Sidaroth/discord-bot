@@ -9,8 +9,9 @@ import hi from './hi';
 import prune from './prune';
 import racist from './racist';
 import urban from './urban';
+import usage from './usage';
 import xkcd from './xkcd';
 
-const commands = [avatar, cat, citation, dog, fizzbuzz, help, hi, kitsu, prune, racist, urban, xkcd];
+const commands = [avatar, cat, citation, dog, fizzbuzz, help, hi, kitsu, prune, racist, urban, usage, xkcd];
 
 export default commands;
