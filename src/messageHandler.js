@@ -1,5 +1,6 @@
 import Discord from 'discord.js';
 import config from './config.json';
+import updateStats from './utils/updateStats';
 
 function isAllowedToExecute(member, command) {
     let allowed = true;
@@ -58,6 +59,7 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
 
     try {
         command.execute(message, args);
+        updateStats(command.name);
     } catch (error) {
         console.error(error);
         message.channel.send('There was an error trying to execute that command. Notify admin. Please provide a timestamp (or screenshot) of the event if possible.');
