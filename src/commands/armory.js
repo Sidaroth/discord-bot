@@ -114,7 +114,7 @@ module.exports = {
                 const genderString = gender === 1 ? 'Female' : 'Male';
                 const guildName = guild.name;
                 const titleObject = titles.find(title => title.selected != null);
-                const fullName = titleObject ? titleObject.name.replace('%s', name) : '';
+                const fullName = titleObject ? titleObject.name.replace('%s', name) : name;
                 const powerString = powerType.charAt(0).toUpperCase() + powerType.substr(1);
                 const classString = getClassString(res.data.class);
                 const raceString = getRaceString(res.data.race);
