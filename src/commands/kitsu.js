@@ -2,11 +2,11 @@ import axios from 'axios';
 import Discord from 'discord.js';
 import trim from '../utils/trim';
 import getRandomInt from '../utils/getRandomInt';
-import { format } from 'url';
+import config from '../config.json';
 
 /**
  * Anime lookup using Kitsu's API.
- * https://kitsu.io/api/edge/anime?filter[genres]=adventure
+ * https://kitsu.io/api/edge/anime?filter[genres]=adventure&sort=
  */
 
 function formatSingleAnimeEmbed(data, id) {
@@ -78,24 +78,51 @@ function randomAnimeResponse(channel) {
         .catch(error => console.error(error));
 }
 
-function genreResponse(channel, genre) {
-    return undefined;
+function genreResponse(channel, args) {
+    const genreUrlified = args.join('%20');
+    const genre = args.join(' ');
+    const query = `https://kitsu.io/api/edge/anime?filter[genres]=${genreUrlified}&sort=-averageRating`;
+
+    axios
+        .get(query)
+        .then((response) => {
+            const { data } = response.data;
+
+            if (data.length === 0) {
+                return channel.send(`*${genre}* doesn't seem to be a valid genre/category. You can see the list of available genres here: https://kitsu.io/api/edge/genres?page[limit]=20`);
+            }
+
+            const embed = new Discord.RichEmbed()
+                .setColor('#00AE86')
+                .setTitle(`The 10 highest rated anime in the ${genre} genre.`)
+                .setURL(`https://kitsu.io/explore/anime/category/${genreUrlified}`)
+                .setFooter('Short synopses limited to 264 characters. Click the link (...) to read more!');
+
+            for (let i = 0; i < 10; i += 1) {
+                const { attributes, id } = data[i];
+                const title = attributes.titles.en_jp || attributes.titles.en_us || attributes.titles.en;
+                const synopsis = `${trim(attributes.synopsis, 264, false)}[...](https://kitsu.io/anime/${id})`;
+
+                embed.addField(`${i + 1} - ${title} (${attributes.averageRating}%):`, synopsis);
+            }
+
+            return channel.send(embed);
+        })
+        .catch(error => console.error(error));
 }
 
 module.exports = {
     name: 'kitsu',
-    description: 'Anime lookup by title, random anime, or a top 10 list based on the genre. Works by best match.',
+    description: 'Anime lookup by title, random anime, or a top 10 list based on the genre.',
     cooldown: 5,
     aliases: ['anime'],
-    usage: 'genre [genre name].\n[anime title].\nno argument (random)',
+    usage: `genre [genre name]\n${config.prefix}kitsu [anime title]\n${config.prefix}kitsu [] (no argument, random lookup)`,
     execute(message, args) {
         const comm = args[0];
         if (comm == null) {
             randomAnimeResponse(message.channel);
         } else if (comm === 'genre') {
-            // get a top 10 list in the genre.
-            const genre = args.shift();
-            genreResponse(message.channel, genre);
+            genreResponse(message.channel, args.slice(1));
         } else {
             animeResponse(message.channel, args);
         }
