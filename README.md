@@ -3,7 +3,8 @@ Discord bot for my server
 
 ## Commands
 All commands are prefixed with '!'.<br/>
-Highlighted commands:  
+Highlighted commands:
+* armory --> Wow armory character lookup.
 * kitsu --> anime lookup
 * cat --> random cat image/gif
 * dog --> random dog image/gif
