@@ -36,6 +36,7 @@ module.exports = {
                     message.reply("It seems like I can't DM you! Do you have DMs disabled?");
                 });
         } else {
+            // Provides helpful information about a specific command the user has asked about (if it exists.)
             const commandKey = args.shift().toLowerCase();
             const command = commands.get(commandKey) || commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandKey));
 
