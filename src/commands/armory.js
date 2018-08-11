@@ -1,72 +1,8 @@
 import secrets from '../../secrets.json';
 import axios from 'axios';
 import Discord from 'discord.js';
-
-function getRaceString(raceId) {
-    switch (raceId) {
-        case 1:
-            return 'Human';
-        case 2:
-            return 'Orc';
-        case 3:
-            return 'Dwarf';
-        case 4:
-            return 'Night Elf';
-        case 5:
-            return 'Undead';
-        case 6:
-            return 'Tauren';
-        case 7:
-            return 'Gnome';
-        case 8:
-            return 'Troll';
-        case 9:
-            return 'Goblin';
-        case 10:
-            return 'Blood Elf';
-        case 11:
-            return 'Draenei';
-        case 22:
-            return 'Worgen';
-        case 24:
-            return 'Pandaren';
-        case 25:
-            return 'Pandaren';
-        case 26:
-            return 'Pandaren';
-        case 27:
-            return 'Nightborne';
-        case 28:
-            return 'Highmountain Tauren';
-        case 29:
-            return 'Void Elf';
-        case 30:
-            return 'Lightforged Draenei';
-        case 34:
-            return 'Dark Iron Dwarf';
-        case 36:
-            return "Mag'har Orc";
-    }
-    return '';
-}
-
-function getClassString(classId) {
-    const classNames = [
-        'Warrior',
-        'Paladin',
-        'Hunter',
-        'Rogue',
-        'Priest',
-        'Death Knight',
-        'Shaman',
-        'Mage',
-        'Warlock',
-        'Monk',
-        'Druid',
-        'Demon Hunter',
-    ];
-    return classNames[classId - 1];
-}
+import getRaceString from '../utils/getWowRaceString';
+import getClassString from '../utils/getWowClassString';
 
 module.exports = {
     name: 'armory',
@@ -138,7 +74,7 @@ module.exports = {
             })
             .catch((err) => {
                 if (err.response.data.reason === 'Character not found.') {
-                    message.channel.send("I'm afraid I coulnd't find any characters on that realm, with that name.");
+                    message.channel.send("I'm afraid I coulnd't find any characters on that realm, with that name. If you believe this is an error, contact admin.");
                 } else {
                     console.error(err);
                 }
