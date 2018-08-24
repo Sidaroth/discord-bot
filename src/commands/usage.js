@@ -1,4 +1,5 @@
 import { db } from '../db/connection';
+import config from '../config.json';
 
 module.exports = {
     name: 'usage',
@@ -10,7 +11,7 @@ module.exports = {
                 const output = ['**Bot Usage Statistics:**'];
                 let totalUses = 0;
                 res.forEach((comm) => {
-                    output.push(`\`${comm.command}\` has been used **${comm.uses}** times!`);
+                    output.push(`\`${config.prefix}${comm.command}\` has been used **${comm.uses}** times!`);
                     totalUses += comm.uses;
                 });
 
