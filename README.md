@@ -2,15 +2,10 @@
 Discord bot for my server
 
 ## Commands
-All commands are prefixed with '!'.<br/>
-Highlighted commands:
-* armory --> Wow armory character lookup.
-* kitsu --> anime lookup
-* cat --> random cat image/gif
-* dog --> random dog image/gif
-* xkcd --> random or specific xkcd lookup
-
-For a list of all commands see the 'src/commands/' directory.<br/>
+All commands are prefixed with '!' (Configurable through config.json).<br/>
+Please keep in mind some (most?) of the commands are rather silly, and are built to suit the 'needs/wants' of one specific discord server.
+![Screenshot showing current commands.](https://i.imgur.com/rlMcr9B.png)
+<br/>
 For a list of planned commands, see issues.  
 
 ## To run
