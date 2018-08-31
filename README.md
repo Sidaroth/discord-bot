@@ -4,6 +4,7 @@ Discord bot for my server
 ## Commands
 All commands are prefixed with '!' (Configurable through config.json).<br/>
 Please keep in mind some (most?) of the commands are rather silly, and are built to suit the 'needs/wants' of one specific discord server.
+<br/>
 ![Screenshot showing current commands.](https://i.imgur.com/rlMcr9B.png)
 <br/>
 For a list of planned commands, see issues.  
