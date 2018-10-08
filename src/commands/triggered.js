@@ -12,6 +12,7 @@ module.exports = {
             'https://media1.tenor.com/images/5bccf1071929b114887285331a6598d0/tenor.gif?itemid=5038478',
             'https://vignette.wikia.nocookie.net/animal-jam-clans-1/images/d/dd/LOLTRIG.gif/revision/latest?cb=20161021225140',
             'https://imgur.com/gallery/kYpzMGs',
+            'https://i.kym-cdn.com/photos/images/original/001/166/110/373.gif'
         ];
 
         const triggeredIndex = getRandomInt(0, gifPool.length);
