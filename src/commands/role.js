@@ -1,9 +1,10 @@
 import config from '../config.json';
 
 /**
- * TODO: Add a way to remove an assigned role if it's assignable. (Maybe as aseperate command.) 
+ * TODO: Add a way to remove an assigned role if it's assignable. (Maybe as aseperate command.)
  * use message.member.removeRole(role);
- **/ 
+ * */
+
 module.exports = {
     name: 'role',
     aliases: ['assign'],
@@ -14,20 +15,19 @@ module.exports = {
     usage: `<role>\nAssignable roles are: ${config.assignableRoles.join(', ')}`,
     execute: async (message, args) => {
         const newRole = args[0];
-        
-        if(!config.assignableRoles.find((role) => role.toLowerCase() === newRole.toLowerCase())) {
+
+        const isAssignableRole = config.assignableRoles.find(r => r.toLowerCase() === newRole.toLowerCase());
+        const role = message.guild.roles.find(r => r.name.toLowerCase() === newRole.toLowerCase());
+
+        if (!isAssignableRole || !role) {
             return message.channel.send(`That doesn't look like a valid role. Valid roles are \`${config.assignableRoles.join(', ')}\``);
         }
 
-        const role = message.guild.roles.find(role => role.name.toLowerCase() === newRole.toLowerCase());
-        if(role) {
-            // console.log(message.member.user);
-            if(message.member.roles.has(role.id)) {
-                return message.channel.send(`You're already assigned as \`${role.name}\`.`);
-            }
-
-            message.member.addRole(role);
-            return message.channel.send(`Succesfully assigned you to \`${role.name}\``);
+        if (message.member.roles.has(role.id)) {
+            return message.channel.send(`You're already assigned as \`${role.name}\`.`);
         }
+
+        message.member.addRole(role);
+        return message.channel.send(`Succesfully assigned you to \`${role.name}\``);
     },
 };
