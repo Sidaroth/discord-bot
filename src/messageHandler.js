@@ -59,7 +59,7 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
 
     try {
         command.execute(message, args);
-        // updateStats(command.name);
+        updateStats(command.name);
     } catch (error) {
         console.error(error);
         message.channel.send('There was an error trying to execute that command. Notify admin. Please provide a timestamp (or screenshot) of the event if possible.');
