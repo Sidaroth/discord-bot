@@ -4,5 +4,5 @@ module.exports = {
     description: 'Asks the bot to call an admin.',
     cooldown: 5,
     guildOnly: true,
-    execute: async (message, args) => message.channel.send('Summoning @Sidaroth#3269'),
+    execute: async (message, args) => message.channel.send('Summoning <@104945508409217024>'),
 };
