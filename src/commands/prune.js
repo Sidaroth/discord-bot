@@ -9,14 +9,14 @@ module.exports = {
     execute(message, args) {
         const amount = parseInt(args[0]);
         if (Number.isNaN(amount)) {
-            message.channel.send(`${amount} is not a valid number`);
+            return message.channel.send(`${amount} is not a valid number`);
         }
 
         if (amount < 1 || amount > 50) {
-            message.channel.send(`${amount} is not in valid range (1-50).`);
+            return message.channel.send(`${amount} is not in valid range (1-50).`);
         }
 
-        message.channel.bulkDelete(amount + 1, true).catch((err) => {
+        return message.channel.bulkDelete(amount + 1, true).catch((err) => {
             console.error(err);
             message.channel.send('There was an error trying to prune messages.');
         });
