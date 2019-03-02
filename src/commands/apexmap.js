@@ -1,13 +1,8 @@
 module.exports = {
-    name: 'name',
+    name: 'apexmap',
     description: 'description',
-    roleRestriction: ['Senpai'],
-    aliases: ['alias1'],
-    cooldown: 5,
-    guildOnly: false,
-    requiresArgs: false,
-    usage: '<argument1>',
     execute: async (message, args) => {
-        // code here.
+        const mapUri = 'https://i.imgur.com/eFtM62N.jpg';
+        return message.channel.send(mapUri);
     },
 };

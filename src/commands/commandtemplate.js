@@ -9,6 +9,8 @@
  * requiresArgs:                boolean    --> Specifies whether or not
  * usage:                       string     --> Describes how the command is used i.e '!name <argument1> <argument2>'. Used by the !help command.
  * execute:         required   function   --> The code that runs when the command is executed.
+ *
+ * For a command to be executable, all required parameters must be present, and the command must be referenced in commands/index.js.
  */
 
 module.exports = {
