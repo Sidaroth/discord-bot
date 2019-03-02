@@ -7,7 +7,7 @@ import config from '../config.json';
 
 module.exports = {
     name: 'role',
-    aliases: ['assign'],
+    aliases: ['assign', 'join'],
     description: 'Asks the bot to assign you to a specified role. (If allowed)',
     cooldown: 5,
     requiresArgs: true,

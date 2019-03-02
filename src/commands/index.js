@@ -14,7 +14,26 @@ import urban from './urban';
 import usage from './usage';
 import xkcd from './xkcd';
 import role from './role';
+import leaveRole from './leaverole';
 
-const commands = [armory, avatar, cat, citation, dog, fizzbuzz, help, hi, kitsu, prune, racist, role, triggered, urban, usage, xkcd];
+const commands = [
+    armory,
+    avatar,
+    cat,
+    citation,
+    dog,
+    fizzbuzz,
+    help,
+    hi,
+    kitsu,
+    leaveRole,
+    prune,
+    racist,
+    role,
+    triggered,
+    urban,
+    usage,
+    xkcd,
+];
 
 export default commands;
