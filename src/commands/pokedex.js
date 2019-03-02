@@ -1,6 +1,6 @@
 module.exports = {
     name: 'pokedex',
-    description: 'Provides an urban dictionary definition of the given word.',
+    description: 'Provides pokedex lookup of types, abilities and pokemon.',
     cooldown: 5,
     aliases: ['dex'],
     usage: '<pokemon>, type <type>, ability <ability>',

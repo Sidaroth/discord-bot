@@ -56,7 +56,10 @@ function performQuery(message, server, character) {
                 achievementPoints,
                 totalHonorableKills,
                 items,
+                thumbnail,
             } = armoryData.data;
+
+            const hyphenatedRealm = server.replace('%20', '-');
 
             const ilvl = items.averageItemLevelEquipped;
             const maxIlvl = items.averageItemLevel;
@@ -70,26 +73,38 @@ function performQuery(message, server, character) {
             const powerString = powerType.charAt(0).toUpperCase() + powerType.substr(1);
             const classString = getClassString(armoryData.data.class);
             const raceString = getRaceString(armoryData.data.race);
+            const thumbnailUri = `https://render-eu.worldofwarcraft.com/character/${thumbnail}?alt=wow/static/images/2d/avatar/6-0.jpg`;
+
+            const mythicScores = raiderIoData.data.mythic_plus_scores;
+            const mythicPlusScore = mythicScores.all;
+
+            let mythicPlusRole = 'Tank';
+            if (mythicScores.healer > mythicScores.tank) mythicPlusRole = 'Healer';
+            if (mythicScores.dps > mythicScores.healer && mythicScores.dps > mythicScores.tank) mythicPlusRole = 'DPS';
 
             const characterData = [];
             characterData.push(`${name} is a level ${level}, ${genderString} ${raceString} ${classString}.`);
+            characterData.push(`Faction: ${factionString} ${faction === 1 ? 'Scum!' : 'Swine!'}`);
+            characterData.push(`M+ seasonal score: ${mythicPlusScore}.`);
+            characterData.push(`M+ top role: ${mythicPlusRole}.`);
             characterData.push(`Health: ${health}.`);
             characterData.push(`${powerString}: ${power}.`);
-            characterData.push(`Faction: ${factionString} ${faction === 1 ? 'Scum!' : 'Swine!'}`);
             characterData.push(`Achievement Points: ${achievementPoints}.`);
             characterData.push(`"Honorable" kills: ${totalHonorableKills}.`);
+
 
             const embed = new Discord.RichEmbed()
                 .setColor(factionColor)
                 .setTitle(`${fullName} (${ilvl}/${maxIlvl})`)
                 .setDescription(`Member of ${guildName} - ${realm} (${battlegroup})`)
-                .setURL(`https://worldofwarcraft.com/en-gb/character/${server}/${character}`)
+                .setURL(`https://worldofwarcraft.com/en-gb/character/${hyphenatedRealm}/${character}`)
+                .setThumbnail(thumbnailUri)
                 .addField('Character Data', characterData.join('\n'));
             message.channel.send(embed);
         }))
         .catch((err) => {
             if (err.response.data.reason === 'Character not found.') {
-                message.channel.send("I'm afraid I coulnd't find any characters on that realm, with that name. If you believe this is an error, contact admin.");
+                message.channel.send("I'm afraid I coulnd't find any characters on that realm with that name. If you believe this is an error, contact an admin.");
             } else {
                 console.error(err);
             }

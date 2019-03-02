@@ -1,3 +1,4 @@
+import admin from './admin';
 import armory from './armory';
 import avatar from './avatar';
 import cat from './cat';
@@ -17,6 +18,7 @@ import role from './role';
 import leaveRole from './leaverole';
 
 const commands = [
+    admin,
     armory,
     avatar,
     cat,
