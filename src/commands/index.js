@@ -5,6 +5,7 @@ import avatar from './avatar';
 import cat from './cat';
 import citation from './citation';
 import dog from './dog';
+import drop from './drop';
 import fizzbuzz from './fizzbuzz';
 import help from './help';
 import hi from './hi';
@@ -26,6 +27,7 @@ const commands = [
     cat,
     citation,
     dog,
+    drop,
     fizzbuzz,
     help,
     hi,

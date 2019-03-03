@@ -52,6 +52,7 @@ module.exports = {
             if (command.aliases) response.push(`**Aliases:** ${command.aliases.join(', ')}`);
             if (command.description) response.push(`**Description:** ${command.description}`);
             if (command.usage) response.push(`**Usage:** \`${config.prefix}${command.name} ${command.usage}\``);
+            response.push(`**Requires argument:** ${command.requiresArgs ? 'yes' : 'no'}.`);
 
             response.push(`**Cooldown:** ${command.cooldown || 3} seconds.`);
 
