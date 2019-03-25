@@ -11,10 +11,10 @@
     "license": "ISC",
     "dependencies": {
         "axios": "^0.18.0",
-        "babel-eslint": "^8.2.3",
-        "discord.js": "^11.3.2",
-        "nodemon": "^1.17.5",
-        "pg-promise": "^8.4.5",
+        "babel-eslint": "^8.2.6",
+        "discord.js": "^11.4.2",
+        "nodemon": "^1.18.10",
+        "pg-promise": "^8.6.4",
         "snekfetch": "^4.0.4",
         "xml2js": "^0.4.19"
     },
@@ -27,7 +27,7 @@
         "eslint": "^4.19.1",
         "eslint-config-airbnb-base": "^12.1.0",
         "eslint-config-standard": "^10.2.1",
-        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-import": "^2.16.0",
         "eslint-plugin-node": "^4.2.2",
         "eslint-plugin-promise": "^3.6.0",
         "eslint-plugin-standard": "^3.0.1",
