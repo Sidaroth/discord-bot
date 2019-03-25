@@ -1,4 +1,5 @@
 {
     "prefix": "!",
-    "assignableRoles": ["Apex", "PUBG", "Pokeymans"]
+    "assignableRoles": ["Apex", "PUBG", "Pokeymans"],
+    "currentWowTier": "battle-of-dazaralor"
 }

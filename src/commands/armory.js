@@ -4,6 +4,7 @@ import axios from 'axios';
 import Discord from 'discord.js';
 import getRaceString from '../utils/getWowRaceString';
 import getClassString from '../utils/getWowClassString';
+import config from '../config.json';
 
 function getArmoryData(server, character) {
     const uri = `https://eu.api.blizzard.com/wow/character/${server}/${character}?fields=titles,stats,guild,items&locale=en_GB&access_token=${
@@ -14,7 +15,7 @@ function getArmoryData(server, character) {
 }
 
 function getRaiderIoData(server, character) {
-    const uri = `https://raider.io/api/v1/characters/profile?region=eu&realm=${server}&name=${character}&fields=mythic_plus_scores`;
+    const uri = `https://raider.io/api/v1/characters/profile?region=eu&realm=${server}&name=${character}&fields=mythic_plus_scores,raid_progression`;
     return axios.get(uri);
 }
 
@@ -78,6 +79,7 @@ function performQuery(message, server, character) {
             const mythicScores = raiderIoData.data.mythic_plus_scores;
             const mythicPlusScore = mythicScores.all;
 
+            const raidProgression = raiderIoData.data.raid_progression[config.currentWowTier];
             let mythicPlusRole = 'Tank';
             if (mythicScores.healer > mythicScores.tank) mythicPlusRole = 'Healer';
             if (mythicScores.dps > mythicScores.healer && mythicScores.dps > mythicScores.tank) mythicPlusRole = 'DPS';
@@ -87,11 +89,14 @@ function performQuery(message, server, character) {
             characterData.push(`Faction: ${factionString} ${faction === 1 ? 'Scum!' : 'Swine!'}`);
             characterData.push(`M+ seasonal score: ${mythicPlusScore}.`);
             characterData.push(`M+ top role: ${mythicPlusRole}.`);
+
+            if (raidProgression) {
+                characterData.push(`Raid tier progression: ${raidProgression.summary}`);
+            }
             characterData.push(`Health: ${health}.`);
             characterData.push(`${powerString}: ${power}.`);
             characterData.push(`Achievement Points: ${achievementPoints}.`);
             characterData.push(`"Honorable" kills: ${totalHonorableKills}.`);
-
 
             const embed = new Discord.RichEmbed()
                 .setColor(factionColor)
