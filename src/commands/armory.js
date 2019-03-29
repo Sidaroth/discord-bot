@@ -68,7 +68,7 @@ function performQuery(message, server, character) {
             const factionString = faction === 1 ? 'Horde' : 'Alliance';
             const factionColor = faction === 1 ? 'FF2211' : '0099FF';
             const genderString = gender === 1 ? 'Female' : 'Male';
-            const guildName = guild.name;
+            const guildName = guild ? guild.name : '';
             const titleObject = titles.find(title => title.selected != null);
             const fullName = titleObject ? titleObject.name.replace('%s', name) : name;
             const powerString = powerType.charAt(0).toUpperCase() + powerType.substr(1);
@@ -114,17 +114,21 @@ function performQuery(message, server, character) {
             characterData.push(`Achievement Points: ${achievementPoints}.`);
             characterData.push(`"Honorable" kills: ${totalHonorableKills}.`);
 
+
+            const guildString = guild ? `Member of ${guildName} -` : 'Guildless on';
+            const description = `${guildString} ${realm} (${battlegroup})`;
+
             const embed = new Discord.RichEmbed()
                 .setColor(factionColor)
                 .setTitle(`${fullName} (${ilvl}/${maxIlvl})`)
-                .setDescription(`Member of ${guildName} - ${realm} (${battlegroup})`)
+                .setDescription(description)
                 .setURL(`https://worldofwarcraft.com/en-gb/character/${hyphenatedRealm}/${character}`)
                 .setThumbnail(thumbnailUri)
                 .addField('Character Data', characterData.join('\n'));
             message.channel.send(embed);
         }))
         .catch((err) => {
-            if (err.response.data.reason === 'Character unavailable.') {
+            if (err.response && err.response.data.reason === 'Character not found.') {
                 message.channel.send("I'm afraid I coulnd't find any characters on that realm with that name. If you believe this is an error, contact an admin.");
             } else {
                 console.error(err);
