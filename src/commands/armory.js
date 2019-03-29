@@ -15,7 +15,7 @@ function getArmoryData(server, character) {
 }
 
 function getRaiderIoData(server, character) {
-    const uri = `https://raider.io/api/v1/characters/profile?region=eu&realm=${server}&name=${character}&fields=mythic_plus_scores,raid_progression`;
+    const uri = `https://raider.io/api/v1/characters/profile?region=eu&realm=${server}&name=${character}&fields=mythic_plus_scores,raid_progression,mythic_plus_highest_level_runs`;
     return axios.get(uri);
 }
 
@@ -79,8 +79,24 @@ function performQuery(message, server, character) {
             const mythicScores = raiderIoData.data.mythic_plus_scores;
             const mythicPlusScore = mythicScores.all;
 
+            const mythicPlusBestRuns = raiderIoData.data.mythic_plus_highest_level_runs;
+            let bestRunDesc = 'None';
+            if (mythicPlusBestRuns && mythicPlusBestRuns.length > 0) {
+                let bestRun = mythicPlusBestRuns[0];
+                if (!bestRun.num_keystone_upgrades) {
+                    const timedRun = mythicPlusBestRuns.find(run => run.num_keystone_upgrades && run.score > bestRun.score);
+                    if (timedRun) bestRun = timedRun;
+                }
+
+                const chests = bestRun.num_keystone_upgrades;
+                const keyLevel = bestRun.mythic_level;
+                const upgradeString = chests ? `+${chests}` : 'depleted';
+                bestRunDesc = `${bestRun.dungeon} ${keyLevel} ${upgradeString} (${bestRun.score})`;
+            }
+
             const raidProgression = raiderIoData.data.raid_progression[config.currentWowTier];
-            let mythicPlusRole = 'Tank';
+            let mythicPlusRole = 'None';
+            if (mythicScores.tank > 0) mythicPlusRole = 'Tank';
             if (mythicScores.healer > mythicScores.tank) mythicPlusRole = 'Healer';
             if (mythicScores.dps > mythicScores.healer && mythicScores.dps > mythicScores.tank) mythicPlusRole = 'DPS';
 
@@ -89,9 +105,9 @@ function performQuery(message, server, character) {
             characterData.push(`Faction: ${factionString} ${faction === 1 ? 'Scum!' : 'Swine!'}`);
             characterData.push(`M+ seasonal score: ${mythicPlusScore}.`);
             characterData.push(`M+ top role: ${mythicPlusRole}.`);
-
+            characterData.push(`M+ best run: ${bestRunDesc}.`);
             if (raidProgression) {
-                characterData.push(`Raid tier progression: ${raidProgression.summary}`);
+                characterData.push(`Raid tier progression: ${raidProgression.summary}.`);
             }
             characterData.push(`Health: ${health}.`);
             characterData.push(`${powerString}: ${power}.`);
@@ -108,7 +124,7 @@ function performQuery(message, server, character) {
             message.channel.send(embed);
         }))
         .catch((err) => {
-            if (err.response.data.reason === 'Character not found.') {
+            if (err.response.data.reason === 'Character unavailable.') {
                 message.channel.send("I'm afraid I coulnd't find any characters on that realm with that name. If you believe this is an error, contact an admin.");
             } else {
                 console.error(err);
