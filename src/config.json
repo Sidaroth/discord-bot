@@ -1,5 +1,14 @@
 {
     "prefix": "!",
     "assignableRoles": ["Apex", "PUBG", "Pokeymans"],
-    "currentWowTier": "battle-of-dazaralor"
+    "currentWowTier": {
+        "key": "battle-of-dazaralor",
+        "name": "Battle of Dazar'Alor",
+        "abbreviation": "BOD"
+    },
+    "wowSubTier": { 
+        "key": "crucible-of-storms",
+        "name": "Crucible of Storms",
+        "abbreviation": "COS"
+    }
 }

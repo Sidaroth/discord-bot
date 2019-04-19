@@ -94,7 +94,15 @@ function performQuery(message, server, character) {
                 bestRunDesc = `${bestRun.dungeon} ${keyLevel} ${upgradeString} (${bestRun.score})`;
             }
 
-            const raidProgression = raiderIoData.data.raid_progression[config.currentWowTier];
+            const raidProgression = raiderIoData.data.raid_progression[config.currentWowTier.key];
+            let progressionString = `Raid Progression: **${config.currentWowTier.abbreviation}** ${raidProgression.summary}`;
+
+            // If there is a second raid in the current tier.
+            if (config.wowSubTier) {
+                const subTierProgression = raiderIoData.data.raid_progression[config.wowSubTier.key];
+                progressionString = `${progressionString} - **${config.wowSubTier.abbreviation}** ${subTierProgression.summary}`;
+            }
+
             let mythicPlusRole = 'None';
             if (mythicScores.tank > 0) mythicPlusRole = 'Tank';
             if (mythicScores.healer > mythicScores.tank) mythicPlusRole = 'Healer';
@@ -106,9 +114,7 @@ function performQuery(message, server, character) {
             characterData.push(`M+ seasonal score: ${mythicPlusScore}.`);
             characterData.push(`M+ top role: ${mythicPlusRole}.`);
             characterData.push(`M+ best run: ${bestRunDesc}.`);
-            if (raidProgression) {
-                characterData.push(`Raid tier progression: ${raidProgression.summary}.`);
-            }
+            characterData.push(progressionString);
             characterData.push(`Health: ${health}.`);
             characterData.push(`${powerString}: ${power}.`);
             characterData.push(`Achievement Points: ${achievementPoints}.`);
