@@ -135,7 +135,7 @@ function performQuery(message, server, character) {
         }))
         .catch((err) => {
             if (err.response && err.response.data.reason === 'Character not found.') {
-                message.channel.send("I'm afraid I coulnd't find any characters on that realm with that name. If you believe this is an error, contact an admin.");
+                message.channel.send("I'm afraid I couldn't find any characters on that realm with that name. If you believe this is an error, contact an admin.");
             } else {
                 console.error(err);
             }
