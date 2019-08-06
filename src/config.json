@@ -1,6 +1,6 @@
 {
     "prefix": "!",
-    "assignableRoles": ["Apex", "PUBG", "Pokeymans"],
+    "assignableRoles": ["Apex", "PUBG", "Pokeymans", "Classic"],
     "currentWowTier": {
         "key": "battle-of-dazaralor",
         "name": "Battle of Dazar'Alor",
