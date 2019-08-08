@@ -28,10 +28,9 @@ module.exports = {
             const example = trim(top.example, 1024) || 'No example found.';
             const embed = new Discord.RichEmbed()
                 .setColor('EFFF00')
-                .setTitle(top.word)
+                .setTitle(top.word[0].toUpperCase() + top.word.slice(1))
                 .setURL(top.permalink)
                 .addField('Definition', trim(top.definition, 1024))
-                .addBlankField(false)
                 .addField('Example', example)
                 .addBlankField(false)
                 .addField('Rating', `${top.thumbs_up} thumbs up.\n${top.thumbs_down} thumbs down.`);
