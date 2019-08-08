@@ -2,13 +2,9 @@
     "prefix": "!",
     "assignableRoles": ["Apex", "PUBG", "Pokeymans", "Classic"],
     "currentWowTier": {
-        "key": "battle-of-dazaralor",
-        "name": "Battle of Dazar'Alor",
-        "abbreviation": "BOD"
+        "key": "the-eternal-palace",
+        "name": "The Eternal Palace",
+        "abbreviation": "TEP"
     },
-    "wowSubTier": { 
-        "key": "crucible-of-storms",
-        "name": "Crucible of Storms",
-        "abbreviation": "COS"
-    }
+    "wowSubTier": null
 }
