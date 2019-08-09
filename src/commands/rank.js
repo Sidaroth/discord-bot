@@ -4,7 +4,7 @@ import { levels } from '../utils/calculateLevelTable';
 import { findLast } from 'lodash';
 
 const calculateLevel = function calculateLevelFunc(experience) {
-    const level = findLast(levels, xpReq => xpReq < experience);
+    const level = levels.indexOf(findLast(levels, xpReq => xpReq < experience)) + 1;
 
     return level;
 };
