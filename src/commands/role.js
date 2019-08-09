@@ -1,10 +1,5 @@
 import config from '../config.json';
 
-/**
- * TODO: Add a way to remove an assigned role if it's assignable. (Maybe as aseperate command.)
- * use message.member.removeRole(role);
- * */
-
 module.exports = {
     name: 'role',
     aliases: ['assign', 'join'],

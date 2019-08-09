@@ -13,6 +13,7 @@ import kitsu from './kitsu';
 import leaveRole from './leaverole';
 import prune from './prune';
 import racist from './racist';
+import rank from './rank';
 import triggered from './triggered';
 import urban from './urban';
 import usage from './usage';
@@ -35,6 +36,7 @@ const commands = [
     leaveRole,
     prune,
     racist,
+    rank,
     role,
     triggered,
     urban,

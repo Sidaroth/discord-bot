@@ -12,7 +12,11 @@
             "message": 25,
             "character": 1
         },
-        "required": 250,
+        "baseXP": 50,
         "modifier": 1.1
+    },
+    "levels": {
+        "min": 0,
+        "max": 250
     }
 }

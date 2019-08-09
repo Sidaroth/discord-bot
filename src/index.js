@@ -2,6 +2,7 @@ import Discord from 'discord.js';
 import secrets from '../secrets.json';
 import messageHandler from './messageHandler';
 import commands from './commands';
+import { calculateLevelTable } from './utils/calculateLevelTable';
 
 const client = new Discord.Client();
 const cooldowns = new Discord.Collection();
@@ -14,6 +15,7 @@ commands.forEach((command) => {
 
 client.on('ready', () => {
     client.user.setActivity('Try !help');
+    calculateLevelTable();
     console.log('Bot connected succesfully!');
 });
 
