@@ -6,5 +6,13 @@
         "name": "The Eternal Palace",
         "abbreviation": "TEP"
     },
-    "wowSubTier": null
+    "wowSubTier": null,
+    "experience": {
+        "gain": {
+            "message": 25,
+            "character": 1
+        },
+        "required": 250,
+        "modifier": 1.1
+    }
 }

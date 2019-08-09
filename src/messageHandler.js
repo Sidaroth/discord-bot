@@ -1,6 +1,7 @@
 import Discord from 'discord.js';
 import config from './config.json';
 import updateStats from './utils/updateStats';
+import updateExperience from './features/experience';
 
 function isAllowedToExecute(member, command) {
     let allowed = true;
@@ -19,13 +20,17 @@ function isAllowedToExecute(member, command) {
 }
 
 const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+    if (message.author.bot) return;
+    updateExperience(message.author); // As long as the message is not from a bot, we count up experience.
+
+    if (!message.content.startsWith(config.prefix)) return;
 
     const args = message.content.slice(config.prefix.length).split(/ +/);
     const commandKey = args.shift().toLowerCase();
     const command = client.commands.get(commandKey) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandKey));
 
     if (!command) return;
+    if (!isAllowedToExecute(message.member, command)) return;
 
     if (command.guildOnly && message.channel.type !== 'text') {
         message.reply("I can't execute that command in DMs");
@@ -36,8 +41,6 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
         message.channel.send(`You didn't provide any arguments, ${message.author}!`);
         return;
     }
-
-    if (!isAllowedToExecute(message.member, command)) return;
 
     if (!cooldowns.has(command.name)) {
         cooldowns.set(command.name, new Discord.Collection());

@@ -3,6 +3,11 @@ CREATE TABLE IF NOT EXISTS commandStats (
 	uses int
 );
 
+CREATE TABLE IF NOT EXISTS experience (
+	userId int,
+	experience int
+)
+
 CREATE TABLE IF NOT EXISTS types (
 	id int,
 	name text,
