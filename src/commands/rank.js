@@ -1,9 +1,10 @@
 import { db } from '../db/connection';
 import config from '../config.json';
 import { levels } from '../utils/calculateLevelTable';
+import { findLast } from 'lodash';
 
 const calculateLevel = function calculateLevelFunc(experience) {
-    const level = levels.findLast(xpReq => xpReq < experience);
+    const level = findLast(levels, xpReq => xpReq < experience);
 
     return level;
 };
