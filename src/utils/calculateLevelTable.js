@@ -8,10 +8,11 @@ const calculateLevelTable = function calculateLevelTableFunc() {
     levels.push(xpRequiredForPrev);
 
     for (let lvl = config.levels.min; lvl <= config.levels.max; lvl += 1) {
-        let reqThisLevel = Math.floor(1.1 * xpRequiredForPrev);
-        if (reqThisLevel > 40000) {
-            reqThisLevel = 40000;
-        }
+        let modifier = 2.1;
+
+        if (lvl >= 6) modifier = 1.1;
+
+        const reqThisLevel = Math.floor(modifier * xpRequiredForPrev);
 
         const totalXPReq = levels[levels.length - 1] + reqThisLevel;
         levels.push(totalXPReq);
