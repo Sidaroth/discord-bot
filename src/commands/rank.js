@@ -26,7 +26,7 @@ module.exports = {
                 xp = res[0].experience;
             }
 
-            message.channel.send(`You've earned a total of \`${xp}\` XP. You are level \`${level}\`!`);
+            message.channel.send(`You've earned a total of \`${xp}\` XP. You are level \`${level}\`!\nYou need a total of \`${levels[level]} (${levels[level] - xp} remaining)\` XP to hit level \`${level + 1}\`.`);
         }).catch((error) => {
             console.error(error);
         });
