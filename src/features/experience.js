@@ -8,15 +8,16 @@ const calcXpGain = function calcXpGainFunc(messageLength) {
 const updateExperience = function updateExperienceFunc(user) {
     db.any('SELECT * FROM experience')
         .then((res) => {
-            const userXp = res.find(val => val.userId === user.id);
+            const userId = String(user.id);
+            const userXp = res.find(val => val.userId === userId);
             const xpGain = calcXpGain(user.lastMessage.content.length);
 
-            console.log(userXp, xpGain);
+            console.log(userId, userXp, xpGain);
 
             if (!userXp) {
-                db.none('INSERT INTO experience(userId, experience) VALUES ($1, $2)', [user.id, xpGain]);
+                db.none('INSERT INTO experience(userId, experience) VALUES ($1, $2)', [userId, xpGain]);
             } else {
-                db.none('UPDATE experience SET experience = $1 WHERE userId = $2', [userXp.experience + xpGain, userXp.userId]);
+                db.none('UPDATE experience SET experience = $1 WHERE userId = $2', [userXp.experience + xpGain, userId]);
             }
         })
         .catch((error) => {
