@@ -16,7 +16,7 @@ module.exports = {
     execute: async (message, args) => {
         const userId = String(message.author.id);
 
-        db.any('SELECT * FROM experience ORDER BY experience DESC')
+        db.any('SELECT * FROM userStats ORDER BY experience DESC')
             .then((res) => {
                 let level = 0;
                 let xp = 0;

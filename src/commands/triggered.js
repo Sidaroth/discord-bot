@@ -2,7 +2,7 @@ import getRandomInt from '../utils/getRandomInt';
 
 module.exports = {
     name: 'triggered',
-    description: 'Lets everyone you are getting triggered.',
+    description: 'Lets everyone know you are getting triggered.',
     cooldown: 3,
     execute(message, args) {
         const gifPool = [

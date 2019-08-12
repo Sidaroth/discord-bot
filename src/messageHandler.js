@@ -1,7 +1,7 @@
 import Discord from 'discord.js';
 import config from './config.json';
 import updateStats from './utils/updateStats';
-import updateExperience from './features/experience';
+import updateUserStatistics from './features/userStatistics';
 
 function isAllowedToExecute(member, command) {
     let allowed = true;
@@ -21,7 +21,7 @@ function isAllowedToExecute(member, command) {
 
 const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
     if (message.author.bot) return;
-    updateExperience(message.author); // As long as the message is not from a bot, we count up experience.
+    if (message.channel.type === 'text') updateUserStatistics(message.author); // As long as the message is not from a bot, and we're in a guild channel, we update user stats.
 
     if (!message.content.startsWith(config.prefix)) return;
 
@@ -65,7 +65,7 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
         updateStats(command.name);
     } catch (error) {
         console.error(error);
-        message.channel.send('There was an error trying to execute that command. Notify admin. Please provide a timestamp (or screenshot) of the event if possible.');
+        message.channel.send('There was an error trying to execute that command. Summoning minion <@104945508409217024>.');
     }
 };
 
