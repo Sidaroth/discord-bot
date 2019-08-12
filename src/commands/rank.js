@@ -1,5 +1,4 @@
 import { db } from '../db/connection';
-import config from '../config.json';
 import { levels } from '../utils/calculateLevelTable';
 import { findLast } from 'lodash';
 
