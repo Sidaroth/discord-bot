@@ -14,6 +14,7 @@ import leaveRole from './leaverole';
 import prune from './prune';
 import racist from './racist';
 import rank from './rank';
+import stats from './stats';
 import triggered from './triggered';
 import urban from './urban';
 import usage from './usage';
@@ -38,6 +39,7 @@ const commands = [
     racist,
     rank,
     role,
+    stats,
     triggered,
     urban,
     usage,
