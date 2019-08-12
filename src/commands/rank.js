@@ -17,18 +17,30 @@ module.exports = {
     execute: async (message, args) => {
         const userId = String(message.author.id);
 
-        db.any('SELECT experience FROM experience WHERE userid = $1', [userId]).then((res) => {
-            let level = 0;
-            let xp = 0;
+        db.any('SELECT * FROM experience ORDER BY experience DESC')
+            .then((res) => {
+                let level = 0;
+                let xp = 0;
+                const rank = res.findIndex(u => u.userid === userId);
 
-            if (res[0] && res[0].experience !== undefined) {
-                level = calculateLevel(res[0].experience);
-                xp = res[0].experience;
-            }
+                if (rank !== -1) {
+                    const userData = res[rank];
+                    level = calculateLevel(userData.experience);
+                    xp = userData.experience;
+                }
 
-            message.channel.send(`You've earned a total of \`${xp}\` XP. You are level \`${level}\`!\nYou need a total of \`${levels[level]} (${levels[level] - xp} remaining)\` XP to hit level \`${level + 1}\`.`);
-        }).catch((error) => {
-            console.error(error);
-        });
+                let response = `You've earned a total of \`${xp}\` XP. You are level \`${level}\`!\nYou need a total of \`${
+                    levels[level]
+                } (${levels[level] - xp} remaining)\` XP to hit level \`${level + 1}\`.`;
+
+                if (rank !== -1) {
+                    response = response.concat(`\nYou are ranked as \`#${rank + 1}\` on the shitpost leaderboards! Great job!`);
+                }
+
+                message.channel.send(response);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     },
 };

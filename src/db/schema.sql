@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS commandStats (
 );
 
 CREATE TABLE IF NOT EXISTS experience (
-	userId int,
+	userId text,
 	experience int
 )
 
