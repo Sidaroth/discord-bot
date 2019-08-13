@@ -6,7 +6,7 @@
  * aliases:                     [string]   --> Aliases allow users to execute a command by writing !alias1 instead of !name, i.e !wow instead of !armory.
  * cooldown:                    int        --> How long a user will have to wait to execute the command again.
  * guildOnly:                   boolean    --> This locks the command out of DMs. Some functionality cannot work in DMs.
- * requiresArgs:                boolean    --> Specifies whether or not
+ * requiresArgs:                boolean    --> Specifies whether or not the command requires an argument to work.
  * usage:                       string     --> Describes how the command is used i.e '!name <argument1> <argument2>'. Used by the !help command.
  * execute:         required    function   --> The code that runs when the command is executed.
  *
