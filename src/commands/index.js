@@ -9,6 +9,7 @@ import drop from './drop';
 import fizzbuzz from './fizzbuzz';
 import help from './help';
 import hi from './hi';
+import hours from './hours';
 import kitsu from './kitsu';
 import leaveRole from './leaverole';
 import prune from './prune';
@@ -34,6 +35,7 @@ const commands = [
     fizzbuzz,
     help,
     hi,
+    hours,
     kitsu,
     leaveRole,
     prune,
