@@ -18,6 +18,7 @@ import rank from './rank';
 import stats from './stats';
 import sweeney from './sweeney';
 import triggered from './triggered';
+import trivia from './trivia';
 import urban from './urban';
 import usage from './usage';
 import xkcd from './xkcd';
@@ -45,6 +46,7 @@ const commands = [
     stats,
     sweeney,
     triggered,
+    trivia,
     urban,
     usage,
     xkcd,

@@ -11,13 +11,14 @@ module.exports = {
         let date = args[0];
         const time = args[1];
 
-        if (!date.startsWith('20')) {
+        // TODO look through this, it can probably break with certain numbers.
+        if (!date.startsWith('20') && !date.startsWith('19')) {
             date = `20${date}`;
         }
 
         const dateString = `${date.replace(/\.|\//gi, '-')}T${time}Z`;
         const UTCDateTime = new Date(dateString);
-        if (UTCDateTime.toString() === 'Invalid Date') return message.channel.send('You seem to have specified a date or time that does not exist in reality.');
+        if (UTCDateTime.toString() === 'Invalid Date') return message.channel.send(`You seem to have specified a date (${date}) or time (${time}) that does not exist in reality.`);
 
         const then = Number(UTCDateTime);
         const hoursAway = Math.round((then - now) / (1000 * 60 * 60));

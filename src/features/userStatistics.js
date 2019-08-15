@@ -5,12 +5,12 @@ const calcXpGain = function calcXpGainFunc(messageLength) {
     return config.experience.gain.message + messageLength * config.experience.gain.character;
 };
 
-const updateUserStatistics = function updateUserStatisticsFunc(user) {
+const updateUserStatistics = function updateUserStatisticsFunc(user, isCommand) {
     db.any('SELECT * FROM userStats')
         .then((res) => {
             const userId = String(user.id); // The numeric IDs are outside of integer scope, easier to deal with as strings in the DB.
             const userData = res.find(val => val.userid === userId);
-            const xpGain = calcXpGain(user.lastMessage.content.length);
+            const xpGain = calcXpGain(user.lastMessage.content.length) * (isCommand) + 1; // bonus XP if it's a bot command.
 
             if (!userData) {
                 // If this is the first time we see this UserId, we insert a fresh set of values.
