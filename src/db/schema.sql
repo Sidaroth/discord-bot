@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS userStats (
 	userId text,
 	experience int,
 	messageCount int
-)
+);
 
 CREATE TABLE IF NOT EXISTS types (
 	id int,
