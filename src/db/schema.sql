@@ -52,3 +52,13 @@ CREATE TABLE IF NOT EXISTS abilities (
 	flavorText text,
 	updateTime date
 );
+
+CREATE TABLE IF NOT EXISTS trivia (
+	id SERIAL PRIMARY KEY,
+	themes text[],
+	question text,
+	type text,
+	valid text[],
+	invalid text[],
+	resourceUri text,
+);

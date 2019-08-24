@@ -2,7 +2,7 @@ import Discord from 'discord.js';
 import config from './config.json';
 import updateStats from './utils/updateStats';
 import updateUserStatistics from './features/userStatistics';
-import triviaMan from './features/trivia';
+import triviaMan from './features/trivia/triviaModule';
 
 function isAllowedToExecute(member, command) {
     let allowed = true;
@@ -41,12 +41,11 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
     const command = client.commands.get(commandKey) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandKey));
 
     if (!command) return processText(message, false);
-    if (!isAllowedToExecute(message.member, command)) return processText(message, false);
-
     if (command.guildOnly && message.channel.type !== 'text') {
-        message.reply("I can't execute that command in DMs");
+        message.reply("I can't execute that command in DMs.");
         return processText(message, false);
     }
+    if (!isAllowedToExecute(message.member, command)) return processText(message, false);
 
     if (command.requiresArgs && !args.length) {
         message.channel.send(`You didn't provide any arguments, ${message.author}!`);

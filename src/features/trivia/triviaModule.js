@@ -2,8 +2,6 @@ import createTriviaSession from './triviaSession';
 
 const triviaModule = function triviaModuleFunc() {
     const state = {};
-
-    const availableThemes = ['classic', 'wow'];
     let sessions = [];
     let tickTime = Date.now();
     let lastTick = Date.now();
