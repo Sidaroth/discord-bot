@@ -54,6 +54,6 @@ module.exports = {
         const dateString = dateThen.toUTCString();
         const timeZoneOffset = dateThen.getTimezoneOffset() / 60;
 
-        return message.channel.send(`${dateString} is about ${hoursAway + timeZoneOffset} hours away.`);
+        return message.channel.send(`${dateString} is about ${hoursAway - 2} hours away.`);
     },
 };
