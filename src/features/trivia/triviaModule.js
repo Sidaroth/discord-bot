@@ -42,7 +42,7 @@ const triviaModule = function triviaModuleFunc() {
 
     async function runTrivia(message, theme, numQuestions) {
         const { channel, author } = message;
-        if (sessions.find(trivia => trivia.channel)) return channel.send('Trivia session already in progress.');
+        if (sessions.find(trivia => trivia.channel === channel)) return channel.send('Trivia session already in progress.');
         const triviaSession = createTriviaSession(channel, theme, author, numQuestions);
         sessions.push(triviaSession);
         triviaSession.start();
