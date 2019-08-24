@@ -60,5 +60,5 @@ CREATE TABLE IF NOT EXISTS trivia (
 	type text,
 	valid text[],
 	invalid text[],
-	resourceUri text,
+	resourceUri text
 );
