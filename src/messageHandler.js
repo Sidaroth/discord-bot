@@ -45,7 +45,7 @@ const messageHandler = function messageHandlerFunc(client, message, cooldowns) {
         message.reply("I can't execute that command in DMs.");
         return processText(message, false);
     }
-    if (!isAllowedToExecute(message.member, command)) return processText(message, false);
+    if (command.guildOnly && !isAllowedToExecute(message.member, command)) return processText(message, false);
 
     if (command.requiresArgs && !args.length) {
         message.channel.send(`You didn't provide any arguments, ${message.author}!`);
