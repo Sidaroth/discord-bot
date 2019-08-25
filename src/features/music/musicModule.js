@@ -6,6 +6,7 @@ const musicModule = function musicModuleFunc() {
     let dispatcher;
     let connection;
     let isPlaying = false;
+    let volume = 0.5;
 
     function playNext() {
         const song = queue.shift();
@@ -20,10 +21,14 @@ const musicModule = function musicModuleFunc() {
 
         isPlaying = true;
         dispatcher = connection.playStream(ytd);
-        dispatcher.setVolume(0.5);
+        dispatcher.setVolume(volume);
 
         // dispatcher.on('end', () => console.log('end of song!'));
         dispatcher.on('error', e => console.error(e));
+    }
+
+    function queueCount() {
+        return queue.length;
     }
 
     function addToQueue(song) {
@@ -43,10 +48,12 @@ const musicModule = function musicModuleFunc() {
     }
 
     function setVolume(newVolume) {
-        let volume = newVolume;
+        if (Number.isNaN(newVolume)) return;
+
+        volume = newVolume / 100;
         if (volume < 0) volume = 0;
-        if (volume > 100) volume = 100;
-        if (dispatcher) dispatcher.setVolume(volume / 100);
+        if (volume > 1) volume = 1;
+        if (dispatcher) dispatcher.setVolume(volume);
     }
 
     function play() {
@@ -79,6 +86,7 @@ const musicModule = function musicModuleFunc() {
         pause,
         resume,
         play,
+        queueCount,
     });
 
     return state;
