@@ -24,6 +24,15 @@ import usage from './usage';
 import xkcd from './xkcd';
 import role from './role';
 
+import disconnect from './music/disconnect';
+import summon from './music/summon';
+import queue from './music/queue';
+import volume from './music/volume';
+import skip from './music/skip';
+import pause from './music/pause';
+import resume from './music/resume';
+import play from './music/play';
+
 const commands = [
     admin,
     apexmap,
@@ -50,6 +59,15 @@ const commands = [
     urban,
     usage,
     xkcd,
+    // music
+    disconnect,
+    summon,
+    queue,
+    volume,
+    skip,
+    pause,
+    resume,
+    play,
 ];
 
 export default commands;
