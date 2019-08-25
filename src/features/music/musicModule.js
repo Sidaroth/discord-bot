@@ -15,14 +15,15 @@ const musicModule = function musicModuleFunc() {
             return;
         }
 
+        console.log('Playing next song', song);
         const ytd = YTDL(song, { filter: 'audioonly' });
 
         isPlaying = true;
         dispatcher = connection.playStream(ytd);
         dispatcher.setVolume(0.5);
-        dispatcher.on('error', (e) => {
-            console.error(e);
-        });
+
+        dispatcher.on('end', () => console.trace('end of song!'));
+        dispatcher.on('error', e => console.error(e));
     }
 
     function addToQueue(song) {
@@ -30,10 +31,12 @@ const musicModule = function musicModuleFunc() {
     }
 
     function setConnection(con) {
+        console.log('Audio connection established.');
         connection = con;
     }
 
     function disconnect() {
+        console.log('Disconnecting from voice chat.');
         isPlaying = false;
         if (dispatcher) dispatcher.end();
         if (connection) connection.disconnect();
