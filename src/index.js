@@ -39,15 +39,15 @@ client.on('message', (message) => {
 
     let isCommand = false;
     const hasPrefix = message.content.startsWith(config.prefix);
-    const args = message.content.slice(config.prefix.length).split(/ +/);
-    const commandKey = args.shift().toLowerCase();
-    const command = client.commands.get(commandKey) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandKey));
+    if (hasPrefix) {
+        const args = message.content.slice(config.prefix.length).split(/ +/);
+        const commandKey = args.shift().toLowerCase();
+        const command = client.commands.get(commandKey) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandKey));
 
-    if (hasPrefix && command) {
-        isCommand = true;
-        processCommand(client, message, command, args, cooldowns);
-    } else if (hasPrefix) {
-        message.channel.send(`!${commandKey} is not a valid command. Try \`!help\``);
+        if (command) {
+            isCommand = true;
+            processCommand(client, message, command, args, cooldowns);
+        }
     }
 
     processText(message, isCommand);
