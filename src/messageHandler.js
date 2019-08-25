@@ -5,19 +5,14 @@ import updateUserStatistics from './features/userStatistics';
 import triviaMan from './features/trivia/triviaModule';
 
 function isAllowedToExecute(member, command) {
-    let allowed = true;
-    if (command.roleRestriction) {
-        allowed = false;
-        command.roleRestriction.every((role) => {
-            if (member.roles.find('name', role)) {
-                allowed = true; // The user has the required role, we'll allow the execution of the command.
-                return false;
-            }
-            return true;
-        });
+    const administrator = 0x00000008; // Consider also checking for channel management permissions.
+    if (command.adminRestriction) {
+        /* eslint-disable no-bitwise */
+        return member.roles.some(role => (role.permissions & administrator) === administrator);
+        /* eslint-enable no-bitwise */
     }
 
-    return allowed;
+    return true;
 }
 
 function processText(message, isCommand) {

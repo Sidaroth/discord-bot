@@ -2,7 +2,7 @@
  * Template containing all parameters a command may contain.
  * name:            required    string     --> How the command is executed in chat. !name
  * description:     required    string     --> Describes the functionality of the command. Used by the !help command.
- * roleRestriction:             [string]   --> Restricts access to the command to users that has the given role(s). i.e !prune is admin restricted.
+ * adminRestriction:            boolean    --> Restricts access to the command to users that have admin premissions. i.e !prune is restricted.
  * aliases:                     [string]   --> Aliases allow users to execute a command by writing !alias1 instead of !name, i.e !wow instead of !armory.
  * cooldown:                    int        --> How long a user will have to wait to execute the command again.
  * guildOnly:                   boolean    --> This locks the command out of DMs. Some functionality cannot work in DMs.
@@ -16,7 +16,7 @@
 module.exports = {
     name: 'name',
     description: 'description',
-    roleRestriction: ['Senpai'],
+    adminRestriction: true,
     aliases: ['alias1'],
     cooldown: 5,
     guildOnly: false,

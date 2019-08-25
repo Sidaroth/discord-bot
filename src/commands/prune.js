@@ -1,7 +1,7 @@
 module.exports = {
     name: 'prune',
     description: 'Admin restricted command pruning a given number of messages in the channel (1-50 at a time).',
-    roleRestriction: ['Senpai'],
+    adminRestriction: true,
     requiresArgs: true,
     guildOnly: true,
     usage: '<amount>',
