@@ -32,6 +32,7 @@ import skip from './music/skip';
 import pause from './music/pause';
 import resume from './music/resume';
 import play from './music/play';
+import music from './music/music';
 
 const commands = [
     admin,
@@ -68,6 +69,7 @@ const commands = [
     pause,
     resume,
     play,
+    music,
 ];
 
 export default commands;
