@@ -119,7 +119,10 @@ const createTriviaSession = function createTriviaSessionFunc(channel, theme, own
                     const { data } = res;
                     addQuestions(data.results);
                     resolve();
-                }).catch(error => console.error(error));
+                }).catch((error) => {
+                    console.error(error);
+                    reject();
+                });
             } else {
                 if (theme !== undefined) {
                     state.channel.message.send('That doesn\'t seem to be a valid theme. Questions will be from all categories.');
@@ -129,7 +132,10 @@ const createTriviaSession = function createTriviaSessionFunc(channel, theme, own
                     const { data } = res;
                     addQuestions(data.results);
                     resolve();
-                }).catch(error => console.error(error));
+                }).catch((error) => {
+                    console.error(error);
+                    reject();
+                });
             }
         });
     }
