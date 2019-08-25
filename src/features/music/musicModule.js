@@ -23,7 +23,7 @@ const musicModule = function musicModuleFunc() {
         dispatcher = connection.playStream(ytd);
         dispatcher.setVolume(volume);
 
-        // dispatcher.on('end', () => console.log('end of song!'));
+        dispatcher.on('end', () => playNext());
         dispatcher.on('error', e => console.error(e));
     }
 

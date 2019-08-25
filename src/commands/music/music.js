@@ -5,7 +5,7 @@ module.exports = {
     guildOnly: false,
     execute: async (message, args) => {
         const response =
-            'The bot now supports various musical commands!\nUse `!summon` to have the bot join you in a room.\n' +
+            'The bot supports various musical commands!\nUse `!summon` to have the bot join you in a room.\n' +
             '`!volume` may be used to adjust the volume (0-100).\n' +
             '`!play`, `!pause`, `!resume` can be used to control the bot as well.\n' +
             '`!queue <youtube url>` can be used with one, or more, youtube urls to queue songs for play.\n' +
