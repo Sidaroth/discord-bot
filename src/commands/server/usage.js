@@ -1,5 +1,5 @@
-import { db } from '../db/connection';
-import config from '../config.json';
+import { db } from '../../db/connection';
+import config from '../../config.json';
 
 module.exports = {
     name: 'usage',

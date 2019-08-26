@@ -1,13 +1,13 @@
-import config from '../config.json';
+import config from '../../config.json';
 
 module.exports = {
-    name: 'role',
-    aliases: ['assign', 'join'],
-    description: 'Asks the bot to assign you to a specified role. (If allowed)',
+    name: 'leaverole',
+    aliases: ['unassign', 'leave'],
+    description: 'Asks the bot to remove you from a specified role.',
     cooldown: 5,
     requiresArgs: true,
     guildOnly: true,
-    usage: `<role>\nAssignable roles are: ${config.assignableRoles.join(', ')}`,
+    usage: `<role>\nRemovable roles are: ${config.assignableRoles.join(', ')}`,
     execute: async (message, args) => {
         const newRole = args[0];
 
@@ -18,11 +18,11 @@ module.exports = {
             return message.channel.send(`That doesn't look like a valid role. Valid roles are \`${config.assignableRoles.join(', ')}\``);
         }
 
-        if (message.member.roles.has(role.id)) {
-            return message.channel.send(`You're already assigned as \`${role.name}\`.`);
+        if (!message.member.roles.has(role.id)) {
+            return message.channel.send(`You are not assigned as \`${role.name}\`.`);
         }
 
-        message.member.addRole(role);
-        return message.channel.send(`Succesfully assigned you to \`${role.name}\``);
+        message.member.removeRole(role);
+        return message.channel.send(`Succesfully removed you from \`${role.name}\``);
     },
 };

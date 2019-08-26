@@ -1,5 +1,5 @@
-import { db } from '../db/connection';
-import { levels } from '../utils/calculateLevelTable';
+import { db } from '../../db/connection';
+import { levels } from '../../utils/calculateLevelTable';
 import { findLast } from 'lodash';
 
 const calculateLevel = function calculateLevelFunc(experience) {
