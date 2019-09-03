@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: 'avatar',
     description: 'Displays the users avatar.',
     cooldown: 5,

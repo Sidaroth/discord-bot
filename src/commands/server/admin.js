@@ -1,5 +1,5 @@
 
-module.exports = {
+export default {
     name: 'admin',
     description: 'Asks the bot to call an admin.',
     cooldown: 5,

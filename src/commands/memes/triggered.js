@@ -1,6 +1,6 @@
 import getRandomInt from '../../utils/getRandomInt';
 
-module.exports = {
+export default {
     name: 'triggered',
     description: 'Lets everyone know you are getting triggered.',
     cooldown: 3,

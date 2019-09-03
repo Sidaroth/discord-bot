@@ -1,4 +1,4 @@
-import { db } from '../../db/connection';
+import db from '../../db/connection';
 import { levels } from '../../utils/calculateLevelTable';
 import { findLast } from 'lodash';
 
@@ -8,7 +8,7 @@ const calculateLevel = function calculateLevelFunc(experience) {
     return level;
 };
 
-module.exports = {
+export default {
     name: 'rank',
     description: 'Shows you your level, rank, xp on the server.',
     aliases: ['xp'],

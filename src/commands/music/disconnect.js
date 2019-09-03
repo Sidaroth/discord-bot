@@ -1,6 +1,6 @@
 import musicMan from '../../features/music/musicModule';
 
-module.exports = {
+export default {
     name: 'disconnect',
     description: 'Disconnects the bot from voice channels.',
     aliases: ['dc', 'stop'],

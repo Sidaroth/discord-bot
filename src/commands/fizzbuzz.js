@@ -25,7 +25,7 @@ function fizzBuzzCurry(amount) {
     return `\`\`\`\n${response}\`\`\``;
 }
 
-module.exports = {
+export default {
     name: 'fizzbuzz',
     description: 'Prints fizzbuzz from 1 to <amount> (cap. 250, default 25). (fizz, buzz, fuzz, bizz, biff, 3, 5, 7, 11, 13)',
     aliases: ['fizz', 'buzz'],

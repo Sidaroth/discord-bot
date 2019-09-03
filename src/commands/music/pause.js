@@ -1,6 +1,6 @@
 import musicMan from '../../features/music/musicModule';
 
-module.exports = {
+export default {
     name: 'pause',
     description: 'Pauses any voice activity from the bot.',
     cooldown: 5,

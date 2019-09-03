@@ -13,7 +13,7 @@
  * For a command to be executable, all required parameters must be present, and the command must be referenced in commands/index.js.
  */
 
-module.exports = {
+export default {
     name: 'name',
     description: 'description',
     adminRestriction: true,

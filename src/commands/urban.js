@@ -2,7 +2,7 @@ import Discord from 'discord.js';
 import trim from '../utils/trim';
 import axios from 'axios';
 
-module.exports = {
+export default {
     name: 'urban',
     description: 'Provides an urban dictionary definition of the given word.',
     cooldown: 5,

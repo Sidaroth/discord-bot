@@ -1,6 +1,6 @@
 import musicMan from '../../features/music/musicModule';
 
-module.exports = {
+export default {
     name: 'play',
     description: 'Starts playing music from the current queue.',
     cooldown: 5,

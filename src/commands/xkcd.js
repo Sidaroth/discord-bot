@@ -1,6 +1,6 @@
 import getRandomInt from '../utils/getRandomInt';
 
-module.exports = {
+export default {
     name: 'xkcd',
     description: 'Provides a random, or specified XKCD comic.',
     cooldown: 5,

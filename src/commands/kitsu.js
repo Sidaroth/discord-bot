@@ -111,7 +111,7 @@ function genreResponse(channel, args) {
         .catch(error => console.error(error));
 }
 
-module.exports = {
+export default {
     name: 'kitsu',
     description: 'Anime lookup by title, random anime, or a top 10 list based on the genre.',
     cooldown: 5,

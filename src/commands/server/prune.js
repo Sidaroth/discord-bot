@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: 'prune',
     description: 'Admin restricted command pruning a given number of messages in the channel (1-50 at a time).',
     adminRestriction: true,

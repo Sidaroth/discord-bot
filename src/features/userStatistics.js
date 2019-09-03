@@ -1,5 +1,5 @@
 import config from '../config.json';
-import { db } from '../db/connection';
+import db from '../db/connection';
 
 const calcXpGain = function calcXpGainFunc(messageLength) {
     return config.experience.gain.message + messageLength * config.experience.gain.character;

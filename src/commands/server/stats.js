@@ -1,7 +1,7 @@
 import Discord from 'discord.js';
-import { db } from '../../db/connection';
+import db from '../../db/connection';
 
-module.exports = {
+export default {
     name: 'stats',
     description: 'Shows you everything the robotic overlord knows about you. (In DMs)',
     cooldown: 5,

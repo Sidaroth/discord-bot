@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: 'hi',
     description: 'The bot greets you.',
     requiresArgs: false,

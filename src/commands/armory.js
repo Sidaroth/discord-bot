@@ -142,7 +142,7 @@ function performQuery(message, server, character) {
         });
 }
 
-module.exports = {
+export default {
     name: 'armory',
     description: 'Provides WoW Armory information about the specified character and query.',
     cooldown: 5,

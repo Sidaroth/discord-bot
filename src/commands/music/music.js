@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: 'music',
     description: 'Description of music commands.',
     cooldown: 5,

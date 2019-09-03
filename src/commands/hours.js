@@ -19,7 +19,7 @@ function isDateValid(date) {
     return true;
 }
 
-module.exports = {
+export default {
     name: 'hours',
     aliases: ['countdown'],
     description: 'Gives you an indication of how many hours away the given datetime is. Timezone UTC.',

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: 'pokedex',
     description: 'Provides pokedex lookup of types, abilities and pokemon.',
     cooldown: 5,

@@ -2,7 +2,7 @@ import triviaMan from '../features/trivia/triviaModule';
 import openTriviaCategories from '../utils/openTriviaCategories';
 import dbTriviaCategories from '../utils/dbTriviaCategories';
 
-module.exports = {
+export default {
     name: 'trivia',
     description:
         'Starts a trivia session. Defaults to 30 questions. If no theme is specified, it will use questions from all themes. `!trivia list` will show available themes.',

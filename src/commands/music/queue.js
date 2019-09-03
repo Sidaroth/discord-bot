@@ -1,6 +1,6 @@
 import musicMan from '../../features/music/musicModule';
 
-module.exports = {
+export default {
     name: 'queue',
     description: 'queues a song for play.',
     cooldown: 0,

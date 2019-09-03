@@ -1,6 +1,6 @@
 import { Attachment } from 'discord.js';
 
-module.exports = {
+export default {
     name: 'sweeney',
     description: 'EGS memes?',
     aliases: ['egs'],

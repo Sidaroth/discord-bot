@@ -10,6 +10,4 @@ const details = {
 
 const db = pgp(details);
 
-module.exports = {
-    db,
-};
+export default db;

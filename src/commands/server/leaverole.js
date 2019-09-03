@@ -1,6 +1,6 @@
 import config from '../../config.json';
 
-module.exports = {
+export default {
     name: 'leaverole',
     aliases: ['unassign', 'leave'],
     description: 'Asks the bot to remove you from a specified role.',

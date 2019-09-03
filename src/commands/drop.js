@@ -1,6 +1,6 @@
 import getRandomInt from '../utils/getRandomInt';
 
-module.exports = {
+export default {
     name: 'drop',
     description: 'Provides a random drop location for apex. (Backup drop in parentheses in case primary drop is out of range).',
     aliases: ['apexdrop'],

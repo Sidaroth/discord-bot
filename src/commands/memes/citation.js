@@ -1,6 +1,6 @@
 import { Attachment } from 'discord.js';
 
-module.exports = {
+export default {
     name: 'citation',
     description: 'Kindly lets the user know that a citation is needed!',
     cooldown: 5,

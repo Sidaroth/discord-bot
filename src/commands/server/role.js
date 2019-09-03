@@ -1,6 +1,6 @@
 import config from '../../config.json';
 
-module.exports = {
+export default {
     name: 'role',
     aliases: ['assign', 'join'],
     description: 'Asks the bot to assign you to a specified role. (If allowed)',

@@ -1,6 +1,6 @@
 import musicMan from '../../features/music/musicModule';
 
-module.exports = {
+export default {
     name: 'resume',
     description: 'Resumes any paused voice activity.',
     cooldown: 5,

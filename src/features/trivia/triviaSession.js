@@ -1,7 +1,7 @@
 import Discord from 'discord.js';
 import getRandomInt from '../../utils/getRandomInt';
 import createQuestion from './question';
-import { db } from '../../db/connection';
+import db from '../../db/connection';
 import openTriviaCategories from '../../utils/openTriviaCategories';
 import dbTriviaCategories from '../../utils/dbTriviaCategories';
 import axios from 'axios';

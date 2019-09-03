@@ -1,6 +1,6 @@
 import musicMan from '../../features/music/musicModule';
 
-module.exports = {
+export default {
     name: 'volume',
     description: 'Sets the volume the bot plays audio at.',
     aliases: ['vol'],

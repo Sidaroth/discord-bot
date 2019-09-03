@@ -1,6 +1,6 @@
 import musicMan from '../../features/music/musicModule';
 
-module.exports = {
+export default {
     name: 'summon',
     description: 'Summons the bot to a voice channel.',
     cooldown: 5,

@@ -2,7 +2,7 @@ import axios from 'axios';
 import xml2js from 'xml2js';
 import { Attachment } from 'discord.js';
 
-module.exports = {
+export default {
     name: 'cat',
     description: 'Eyebleach in meowtastic form.',
     cooldown: 5,

@@ -1,7 +1,7 @@
-import { db } from '../../db/connection';
+import db from '../../db/connection';
 import config from '../../config.json';
 
-module.exports = {
+export default {
     name: 'usage',
     description: 'Provides usage statistics for each command supported by the bot.',
     requiresArgs: false,

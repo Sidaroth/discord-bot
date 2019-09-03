@@ -1,4 +1,4 @@
-import { db } from '../db/connection';
+import db from '../db/connection';
 
 const updateStats = function updateStatsFunc(commandName) {
     db.task((task) => {

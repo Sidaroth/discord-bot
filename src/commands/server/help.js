@@ -1,6 +1,6 @@
 import config from '../../config.json';
 
-module.exports = {
+export default {
     name: 'help',
     description: 'List of all commands, or provides a description of what a specified command does.',
     aliases: ['commands'],

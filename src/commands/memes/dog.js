@@ -1,7 +1,7 @@
 import snekfetch from 'snekfetch';
 import { Attachment } from 'discord.js';
 
-module.exports = {
+export default {
     name: 'dog',
     description: 'Eyebleach in barktastic form.',
     cooldown: 5,
