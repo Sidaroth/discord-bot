@@ -6,6 +6,7 @@ import { calculateLevelTable } from './utils/calculateLevelTable';
 import config from './config.json';
 import updateUserStatistics from './features/userStatistics';
 import triviaMan from './features/trivia/triviaModule';
+import automod from './features/automoderator.js/automod';
 
 const client = new Discord.Client();
 const cooldowns = new Discord.Collection();
@@ -13,6 +14,8 @@ client.commands = new Discord.Collection();
 
 // Update user experience, check for trivia answers, and other general features.
 function processText(message, isCommand) {
+    automod(message);
+
     if (message.channel.type === 'text') {
         updateUserStatistics(message.author, isCommand); // We don't track userstats for DMs.
     }
