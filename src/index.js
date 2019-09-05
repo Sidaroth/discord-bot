@@ -6,7 +6,7 @@ import { calculateLevelTable } from './utils/calculateLevelTable';
 import config from './config.json';
 import updateUserStatistics from './features/userStatistics';
 import triviaMan from './features/trivia/triviaModule';
-import automod from './features/automoderator.js/automod';
+import automod from './features/automoderator/automod';
 
 const client = new Discord.Client();
 const cooldowns = new Discord.Collection();
