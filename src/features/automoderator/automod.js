@@ -1,6 +1,6 @@
 import { Attachment } from 'discord.js';
 
-const filter = ['nigger', 'nigga'];
+const filter = ['nigger', 'nigga', 'n1gga', 'n1gger', 'nlgga', 'nlgger'];
 
 // Just some naive filtering for starters.
 const automod = function automodFunc(message) {
