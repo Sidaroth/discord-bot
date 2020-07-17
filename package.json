@@ -7,21 +7,23 @@
         "start": "nodemon src/index.js --exec ./node_modules/.bin/babel-node",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/sidaroth/discord-bot.git"
+    },
     "author": "Sidaroth (Christian Holt)",
     "license": "ISC",
     "dependencies": {
         "axios": "^0.18.1",
         "babel-eslint": "^8.2.6",
-        "discord.js": "^11.5.1",
-        "ffmpeg-static": "^2.5.0",
-        "lodash": "^4.17.15",
-        "node-opus": "^0.3.2",
-        "nodemon": "^1.19.1",
+        "discord.js": "^11.6.4",
+        "ffmpeg-static": "^2.7.0",
+        "lodash": "^4.17.19",
+        "node-opus": "^0.3.3",
+        "nodemon": "^1.19.4",
         "pg-promise": "^8.7.5",
         "simple-oauth2": "^4.1.0",
-        "snekfetch": "^4.0.4",
-        "xml2js": "^0.4.19",
-        "ytdl-core": "^0.29.5"
+        "xml2js": "^0.4.23"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
@@ -32,7 +34,7 @@
         "eslint": "^4.19.1",
         "eslint-config-airbnb-base": "^12.1.0",
         "eslint-config-standard": "^10.2.1",
-        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-import": "^2.22.0",
         "eslint-plugin-node": "^4.2.2",
         "eslint-plugin-promise": "^3.6.0",
         "eslint-plugin-standard": "^3.0.1",
