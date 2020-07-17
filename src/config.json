@@ -2,9 +2,9 @@
     "prefix": "!",
     "assignableRoles": ["Apex", "PUBG", "Pokeymans", "Classic"],
     "currentWowTier": {
-        "key": "the-eternal-palace",
-        "name": "The Eternal Palace",
-        "abbreviation": "TEP"
+        "key": "nyalotha-the-waking-city",
+        "name": "Ny'alotha, The Waking City",
+        "abbreviation": "NYA"
     },
     "wowSubTier": null,
     "experience": {

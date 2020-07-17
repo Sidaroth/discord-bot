@@ -2,7 +2,7 @@ import getRandomInt from '../utils/getRandomInt';
 
 export default {
     name: 'drop',
-    description: 'Provides a random drop location for apex. (Backup drop in parentheses in case primary drop is out of range).',
+    description: 'Provides a random drop location for apex. (Backup drop in case primary drop is out of range).',
     aliases: ['apexdrop'],
     cooldown: 5,
     guildOnly: false,

@@ -22,10 +22,10 @@ function isDateValid(date) {
 export default {
     name: 'hours',
     aliases: ['countdown'],
-    description: 'Gives you an indication of how many hours away the given datetime is. Timezone UTC.',
+    description: 'Gives you an indication of how many hours away the given datetime (<yyyy/mm/dd> <hh:mm>) is. Timezone UTC.',
     cooldown: 5,
     requiresArgs: true,
-    usage: '<date> <time> where date must be <yy/mm/dd>, <yy.mm.dd> or <yy-mm-dd> and time must be written as <hh:mm:ss> or <hh:mm>',
+    usage: '<date> <time> where date must be <yyyy/mm/dd>, <yyyy.mm.dd> or <yyyy-mm-dd> and time must be written as <hh:mm:ss> or <hh:mm>',
     execute: async (message, args) => {
         if (args.length !== 2) return message.channel.send('2 arguments must be specified for this command. Try `!help hours`.');
 

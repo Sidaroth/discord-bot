@@ -18,6 +18,9 @@ export default {
                         text += ` (**${command.aliases.join(', ')}**)`;
                     }
                     text += ` - *${command.description}*`;
+                    if (command.guildOnly) {
+                        text += ' - *cannot be executed in DMs*';
+                    }
 
                     return text;
                 })
