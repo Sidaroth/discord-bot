@@ -1,10 +1,10 @@
-import { Attachment } from 'discord.js';
+import { MessageAttachment } from 'discord.js';
 
 export default {
     name: 'apexmap',
     description: 'description',
     execute: async (message, args) => {
-        const map = new Attachment('https://i.imgur.com/1gELmjO.jpg');
+        const map = new MessageAttachment('https://i.imgur.com/1gELmjO.jpg');
         return message.channel.send(map);
     },
 };

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Attachment } from 'discord.js';
+import { MessageAttachment } from 'discord.js';
 
 export default {
     name: 'dog',
@@ -9,7 +9,7 @@ export default {
         const uri = 'https://api.thedogapi.com/v1/images/search';
         const res = await axios.get(uri);
         const breedData = res?.data[0]?.breeds[0];
-        const dog = new Attachment(res?.data[0]?.url);
+        const dog = new MessageAttachment(res?.data[0]?.url);
 
         if (breedData) {
             const weightRange = breedData.weigth?.metric;

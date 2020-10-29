@@ -1,4 +1,4 @@
-import { Attachment } from 'discord.js';
+import { MessageAttachment } from 'discord.js';
 
 const filter = ['nigger', 'nigga', 'n1gga', 'n1gger', 'nlgga', 'nlgger'];
 
@@ -15,7 +15,7 @@ const automod = function automodFunc(message) {
 
     if (badWordFound) {
         // delete msg??
-        message.channel.send(new Attachment('https://i.imgflip.com/sbalj.jpg'));
+        message.channel.send(new MessageAttachment('https://i.imgflip.com/sbalj.jpg'));
     }
 };
 

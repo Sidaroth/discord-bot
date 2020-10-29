@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Attachment } from 'discord.js';
+import { MessageAttachment } from 'discord.js';
 
 export default {
     name: 'cat',
@@ -8,7 +8,7 @@ export default {
     execute: async (message, args) => {
         const uri = 'http://thecatapi.com/api/images/get?format=json';
         const res = await axios.get(uri);
-        const cat = new Attachment(res.data[0]?.url);
+        const cat = new MessageAttachment(res.data[0]?.url);
         message.channel.send(cat);
     },
 };

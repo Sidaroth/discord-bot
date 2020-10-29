@@ -1,4 +1,4 @@
-import { Attachment } from 'discord.js';
+import { MessageAttachment } from 'discord.js';
 import shuffleArray from '../../utils/shuffleArray';
 
 // Assign a letter to each answer in a multiple choice setting.
@@ -57,7 +57,7 @@ const createQuestion = function createQuestionFunc(rawData) {
     function getAttachment() {
         if (type !== 'image') return undefined;
 
-        return new Attachment(resourceuri);
+        return new MessageAttachment(resourceuri);
     }
 
     function hasTimeLeft() {

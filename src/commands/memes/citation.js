@@ -1,4 +1,4 @@
-import { Attachment } from 'discord.js';
+import { MessageAttachment } from 'discord.js';
 
 export default {
     name: 'citation',
@@ -6,7 +6,7 @@ export default {
     cooldown: 5,
     aliases: ['cn'],
     execute: async (message, args) => {
-        const attachment = new Attachment('https://i.imgur.com/nb0HLsT.png');
+        const attachment = new MessageAttachment('https://i.imgur.com/nb0HLsT.png');
         return message.channel.send(attachment);
     },
 };

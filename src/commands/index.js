@@ -11,6 +11,7 @@ import urban from './urban';
 import xkcd from './xkcd';
 import nasa from './nasa';
 import lifeadvice from './lifeadvice';
+import iss from './iss';
 
 import cat from './memes/cat';
 import dog from './memes/dog';
@@ -66,6 +67,7 @@ const commands = [
     xkcd,
     nasa,
     lifeadvice,
+    iss,
 
     // music
     disconnect,

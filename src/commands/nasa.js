@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Attachment } from 'discord.js';
+import { MessageAttachment } from 'discord.js';
 import secrets from '../../secrets.json';
 
 export default {
@@ -15,7 +15,7 @@ export default {
             const res = await axios.get(uri);
             const { title, hdurl, explanation }  = res.data;
 
-            const img = new Attachment(hdurl);
+            const img = new MessageAttachment(hdurl);
             message.channel.send(`**Astronomy Picture of the Day - ${title}**:\n${explanation}`);
             message.channel.send(img);
         } catch {

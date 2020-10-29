@@ -4,6 +4,7 @@ export default {
     name: 'lifeadvice',
     description: 'Provides (shitty) life advice!',
     aliases: ['advice'],
+    guildOnly: false,
     cooldown: 2,
     execute: async (message, args) => {
         const uri = 'https://api.adviceslip.com/advice';
