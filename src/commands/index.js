@@ -9,6 +9,7 @@ import kitsu from './kitsu';
 import trivia from './trivia';
 import urban from './urban';
 import xkcd from './xkcd';
+import nasa from './nasa';
 
 import cat from './memes/cat';
 import dog from './memes/dog';
@@ -62,6 +63,8 @@ const commands = [
     urban,
     usage,
     xkcd,
+    nasa,
+
     // music
     disconnect,
     summon,
