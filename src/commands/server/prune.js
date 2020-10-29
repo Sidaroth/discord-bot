@@ -6,7 +6,7 @@ export default {
     guildOnly: true,
     usage: '<amount>',
     cooldown: 5,
-    execute(message, args) {
+    execute: async (message, args) => {
         const amount = parseInt(args[0]);
         if (Number.isNaN(amount)) {
             return message.channel.send(`${amount} is not a valid number`);

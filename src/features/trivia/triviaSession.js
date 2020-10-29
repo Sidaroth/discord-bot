@@ -93,51 +93,33 @@ const createTriviaSession = function createTriviaSessionFunc(channel, theme, own
     }
 
     async function populateQuestionPool() {
-        return new Promise((resolve, reject) => {
-            if (state.theme && dbTriviaCategories.some(th => th.toLowerCase() === state.theme.toLowerCase())) {
-                db.any('SELECT * FROM trivia WHERE $1 = ANY (themes)', state.theme.toLowerCase())
-                    .then((res) => {
-                        addQuestions(res);
-                        resolve();
-                    }).catch((error) => {
-                        console.error(error);
-                        reject();
-                    });
-
-                return;
-            }
-
-            let triviaCategory;
-            const lim = state.limit !== undefined ? state.limit : defaultQuestionCap;
-            const opentdbUri = `https://opentdb.com/api.php?amount=${lim}`;
-
-            if (state.theme) triviaCategory = openTriviaCategories.find(cat => cat.name.toLowerCase() === state.theme.toLowerCase());
-            if (triviaCategory) {
-                const uri = `${opentdbUri}&category=${triviaCategory.id}`;
-
-                axios.get(uri).then((res) => {
-                    const { data } = res;
-                    addQuestions(data.results);
-                    resolve();
+        if (state.theme && dbTriviaCategories.some(th => th.toLowerCase() === state.theme.toLowerCase())) {
+            db.any('SELECT * FROM trivia WHERE $1 = ANY (themes)', state.theme.toLowerCase())
+                .then((res) => {
+                    addQuestions(res);
                 }).catch((error) => {
                     console.error(error);
-                    reject();
                 });
-            } else {
-                if (theme !== undefined) {
-                    state.channel.message.send('That doesn\'t seem to be a valid theme. Questions will be from all categories.');
-                }
 
-                axios.get(opentdbUri).then((res) => {
-                    const { data } = res;
-                    addQuestions(data.results);
-                    resolve();
-                }).catch((error) => {
-                    console.error(error);
-                    reject();
-                });
-            }
-        });
+            return;
+        }
+
+        let triviaCategory;
+        const lim = state.limit !== undefined ? state.limit : defaultQuestionCap;
+        const opentdbUri = `https://opentdb.com/api.php?amount=${lim}`;
+
+        if (state.theme) triviaCategory = openTriviaCategories.find(cat => cat.name.toLowerCase() === state.theme.toLowerCase());
+
+        let uri = opentdbUri;
+        if (triviaCategory) {
+            uri = `${opentdbUri}&category=${triviaCategory.id}`;
+        } else if (theme !== undefined) {
+            state.channel.message.send('That doesn\'t seem to be a valid theme. Questions will be from all categories.');
+        }
+
+        const res = await axios.get(uri);
+        const { data } = res;
+        addQuestions(data.results);
     }
 
     function tick(time, delta) {
@@ -163,12 +145,19 @@ const createTriviaSession = function createTriviaSessionFunc(channel, theme, own
     }
 
     async function start() {
-        state.channel.send(`Starting a new trivia session. Admins and the starting user may stop the session by wrting \`${safeWord}\` in the chat.`);
+        /* eslint-disable-next-line max-len */
+        const msg = `Starting a new trivia session. Admins and the starting user may stop the session by writing \`${safeWord}\` in the chat.`;
+        state.channel.send(msg);
+
         isSessionActive = true;
         isPaused = true;
         if (state.limit === undefined) state.limit = defaultQuestionCap;
+
         await populateQuestionPool();
-        participants.push({ name: owner.username, id: owner.id, correct: 0 }); // We always start with the owner as a participant.
+
+        // We always start with the owner as a participant.
+        participants.push({ name: owner.username, id: owner.id, correct: 0 });
+
         // start first question.
         state.pickQuestion();
     }

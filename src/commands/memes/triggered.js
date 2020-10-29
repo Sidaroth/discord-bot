@@ -4,7 +4,7 @@ export default {
     name: 'triggered',
     description: 'Lets everyone know you are getting triggered.',
     cooldown: 3,
-    execute(message, args) {
+    execute: async (message, args) => {
         const gifPool = [
             'https://gfycat.com/dearestspiffyalpaca',
             'https://gfycat.com/TightAlarmingJanenschia',

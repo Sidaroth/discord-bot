@@ -5,7 +5,7 @@ export default {
     name: 'usage',
     description: 'Provides usage statistics for each command supported by the bot.',
     requiresArgs: false,
-    execute(message, args) {
+    execute: async (message, args) => {
         db.any('SELECT * from commandStats ORDER BY uses DESC')
             .then((res) => {
                 const output = ['**Bot Usage Statistics:**'];

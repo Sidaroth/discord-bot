@@ -30,7 +30,7 @@ export default {
     description: 'Prints fizzbuzz from 1 to <amount> (cap. 250, default 25). (fizz, buzz, fuzz, bizz, biff, 3, 5, 7, 11, 13)',
     aliases: ['fizz', 'buzz'],
     usage: ['<amount>'],
-    execute(message, args) {
+    execute: async (message, args) => {
         let amount = parseInt(args[0]) || 25;
         if (amount < 1) amount = 1;
         if (amount > 250) amount = 250;

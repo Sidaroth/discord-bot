@@ -1,3 +1,5 @@
+// import YTDL from 'discord-ytdl-core';
+
 // const musicModule = function musicModuleFunc() {
 //     const state = {};
 //     const queue = [];
@@ -8,14 +10,20 @@
 
 //     function playNext() {
 //         const song = queue.shift();
+//         console.log('attempting to play', song);
+
 //         if (!song || !connection) {
 //             isPlaying = false;
 //             if (dispatcher) dispatcher.pause();
 //             return;
 //         }
 
-//         console.log('Playing next song', song);
-//         const ytd = YTDL(song, { filter: 'audioonly' });
+//         const ytd = YTDL(song, {
+//             filter: 'audioonly',
+//             opusEncoded: false,
+//             fmt: 'mp3',
+//             encoderArgs: ['-af', 'bass=g=10, dynaudnorm=f=200'],
+//         });
 
 //         isPlaying = true;
 //         dispatcher = connection.playStream(ytd);

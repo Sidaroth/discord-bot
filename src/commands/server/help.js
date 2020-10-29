@@ -5,7 +5,7 @@ export default {
     description: 'List of all commands, or provides a description of what a specified command does.',
     aliases: ['commands'],
     usage: '[command name]',
-    execute(message, args) {
+    execute: async (message, args) => {
         const response = [];
         const { commands } = message.client;
 

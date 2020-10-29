@@ -5,7 +5,7 @@ export default {
     aliases: ['dex'],
     usage: '<pokemon>, type <type>, ability <ability>',
     requiresArgs: true,
-    execute(message, args) {
+    execute: async (message, args) => {
         const command = args.shift();
         if (command === '') return;
 

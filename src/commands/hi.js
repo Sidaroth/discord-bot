@@ -3,7 +3,7 @@ export default {
     description: 'The bot greets you.',
     requiresArgs: false,
     aliases: ['greet'],
-    execute(message, args) {
+    execute: async (message, args) => {
         message.channel.send(`Hi ${message.author}!`);
     },
 };

@@ -117,7 +117,7 @@ export default {
     cooldown: 5,
     aliases: ['anime'],
     usage: `genre [genre name]\n${config.prefix}kitsu [anime title]\n${config.prefix}kitsu [] (no argument, random lookup)`,
-    execute(message, args) {
+    execute: async (message, args) => {
         const comm = args[0];
         if (comm == null) {
             randomAnimeResponse(message.channel);

@@ -3,7 +3,7 @@ export default {
     description: 'Displays the users avatar.',
     cooldown: 5,
     aliases: ['icon', 'pfp'],
-    execute(message, args) {
+    execute: async (message, args) => {
         if (!message.mentions.users.size) {
             return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
         }

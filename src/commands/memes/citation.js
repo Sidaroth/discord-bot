@@ -5,7 +5,7 @@ export default {
     description: 'Kindly lets the user know that a citation is needed!',
     cooldown: 5,
     aliases: ['cn'],
-    execute(message, args) {
+    execute: async (message, args) => {
         const attachment = new Attachment('https://i.imgur.com/nb0HLsT.png');
         return message.channel.send(attachment);
     },

@@ -6,8 +6,8 @@ export default {
     cooldown: 5,
     aliases: ['comic'],
     usage: '<number>',
-    execute(message, args) {
-        const numberOfComics = 2008;
+    execute: async (message, args) => {
+        const numberOfComics = 2378;
         let number = parseInt(args.shift());
         let response = '';
         if (number == null || Number.isNaN(number)) {
