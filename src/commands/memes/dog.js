@@ -12,7 +12,19 @@ export default {
         const dog = new Attachment(res?.data[0]?.url);
 
         if (breedData) {
-            message.channel.send(`Breed: **${breedData.name}** - *${breedData.temperament}*\nLifespan: ${breedData.life_span}`);
+            const weightRange = breedData.weigth?.metric;
+            const heightRange = breedData.height?.metric;
+            const purpose = breedData.bred_for;
+            const lifespan = breedData.life_span;
+
+            let breedString = `Breed: **${breedData.name}** - *${breedData.temperament}*`;
+
+            if (lifespan) breedString = `${breedString}\nLifespan: ${lifespan}`;
+            if (purpose) breedString = `${breedString}\nBred for: ${purpose}`;
+            if (heightRange) breedString = `${breedString}\nHeight: ${heightRange}cm`;
+            if (weightRange) breedString = `${breedString}\nWeight: ${weightRange}kg`;
+
+            message.channel.send(breedString);
         }
 
         message.channel.send(dog);
