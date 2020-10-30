@@ -14,6 +14,7 @@ import iss from './iss';
 
 import cat from './memes/cat';
 import dog from './memes/dog';
+import fox from './memes/fox';
 import racist from './memes/racist';
 import sweeney from './memes/sweeney';
 import citation from './memes/citation';
@@ -63,6 +64,7 @@ const commands = [
     citation,
     dadjoke,
     dog,
+    fox,
     lifeadvice,
     racist,
     sweeney,
