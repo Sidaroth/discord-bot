@@ -20,6 +20,7 @@ import citation from './memes/citation';
 import triggered from './memes/triggered';
 import dadjoke from './memes/dadjoke';
 import lifeadvice from './memes/lifeadvice';
+import insult from './memes/insult';
 
 import help from './server/help';
 import leaveRole from './server/leaverole';
@@ -66,6 +67,7 @@ const commands = [
     racist,
     sweeney,
     triggered,
+    insult,
 
     // Server management / Bot statistics and help
     help,
