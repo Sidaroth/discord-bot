@@ -24,7 +24,7 @@ export default {
             const location = locationData.data.results[0].locations[0];
             const countryCode = location.adminArea1 ?? '';
 
-            let resp = `The ISS is currently at coordinates (${issPos.latitude}*, *${issPos.longitude}*):`;
+            let resp = `The ISS is currently at coordinates (*${issPos.latitude}*, *${issPos.longitude}*):`;
             if (countryCode === 'XZ') {
                 resp = `${resp} Which is over International Waters (XZ).`;
             } else {
