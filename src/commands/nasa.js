@@ -31,9 +31,8 @@ export default {
                 message.channel.send(resp);
             } else {
                 message.channel.send(msg);
+                console.error(err);
             }
-
-            console.error(err);
         }
     },
 };
