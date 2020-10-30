@@ -11,6 +11,7 @@ import urban from './urban';
 import xkcd from './xkcd';
 import nasa from './nasa';
 import iss from './iss';
+import covid from './covid';
 
 import cat from './memes/cat';
 import dog from './memes/dog';
@@ -58,6 +59,7 @@ const commands = [
     xkcd,
     nasa,
     iss,
+    covid,
 
     // Memes
     cat,
