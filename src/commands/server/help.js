@@ -26,9 +26,7 @@ export default {
                 })
                 .join('\n');
             response.push(commTexts);
-            response.push(`\nYou can send \`${config.prefix}help ${
-                this.usage
-            }\` to get more detailed info about a specific command. I also work in DMs!`);
+            response.push(`\nYou can send \`${config.prefix}help [command name]\` to get more detailed info about a specific command. I also work in DMs!`);
 
             // DM (Can fail if the user has blocked the bot, or has disabled DMs for privacy reasons etc. We need to catch the error in that case.)
             return message.author
