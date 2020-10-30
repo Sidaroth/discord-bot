@@ -35,7 +35,7 @@ export default {
             resp = `${resp}\nTotal Confirmed Cases: *${formatNum(dataSource.TotalConfirmed)}*.`;
             resp = `${resp}\nTotal Recovered Cases: *${formatNum(dataSource.TotalRecovered)} (${recoveryPct}%)*.`;
             resp = `${resp}\nTotal Deaths: *${formatNum(dataSource.TotalDeaths)} (${deathPct}%)*.`;
-            if (dataSource.Date) resp = `${resp}\n\nData last updated: ${dataSource.Date}.`;
+            if (dataSource.Date) resp = `${resp}\n\n*Data last updated: ${dataSource.Date}.*`;
 
             message.channel.send(resp);
         } catch (err) {
