@@ -12,7 +12,7 @@ export default {
         const dog = new MessageAttachment(res?.data[0]?.url);
 
         if (breedData) {
-            const weightRange = breedData.weigth?.metric;
+            const weightRange = breedData.weight?.metric;
             const heightRange = breedData.height?.metric;
             const purpose = breedData.bred_for;
             const lifespan = breedData.life_span;
