@@ -5,7 +5,7 @@ function isAllowedToExecute(user, command) {
     if (command.adminRestriction) {
         /* eslint-disable no-bitwise */
         const administrator = 0x00000008; // Consider also checking for channel management permissions.
-        return user.roles.some(role => (role.permissions & administrator) === administrator);
+        return user.roles.cache.some(role => (role.permissions & administrator) === administrator);
         /* eslint-enable no-bitwise */
     }
 
