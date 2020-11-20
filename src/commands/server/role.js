@@ -12,17 +12,18 @@ export default {
         const newRole = args[0];
 
         const isAssignableRole = config.assignableRoles.find(r => r.toLowerCase() === newRole.toLowerCase());
-        const role = message.guild.roles.find(r => r.name.toLowerCase() === newRole.toLowerCase());
+        console.log(message);
+        const role = message.guild.roles.cache.find(r => r.name.toLowerCase() === newRole.toLowerCase());
 
         if (!isAssignableRole || !role) {
             return message.channel.send(`That doesn't look like a valid role. Valid roles are \`${config.assignableRoles.join(', ')}\``);
         }
 
-        if (message.member.roles.has(role.id)) {
+        if (message.member.roles.cache.has(role.id)) {
             return message.channel.send(`You're already assigned as \`${role.name}\`.`);
         }
 
-        message.member.addRole(role);
+        message.member.roles.add(role);
         return message.channel.send(`Succesfully assigned you to \`${role.name}\``);
     },
 };
