@@ -1,6 +1,6 @@
 {
     "prefix": "!",
-    "assignableRoles": ["Apex", "PUBG", "Pokeymans", "Classic"],
+    "assignableRoles": ["Apex", "PUBG", "Pokeymans", "Classic", "Warzone"],
     "currentWowTier": {
         "key": "nyalotha-the-waking-city",
         "name": "Ny'alotha, The Waking City",
