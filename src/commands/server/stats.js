@@ -17,7 +17,7 @@ export default {
                 responseData.push(`**Experience:** *${userData.experience}*`);
                 responseData.push(`**Message Count:** *${userData.messagecount}*`);
 
-                const embed = new Discord.RichEmbed()
+                const embed = new Discord.MessageEmbed()
                     .setColor('55FFAA')
                     .setTitle('Sid\'s Server Statistics')
                     .addField('All known data about you', responseData.join('\n'));

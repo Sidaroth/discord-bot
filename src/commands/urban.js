@@ -26,7 +26,7 @@ export default {
         })[0];
 
         const example = trim(top.example, 1024) || 'No example found.';
-        const embed = new Discord.RichEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor('EFFF00')
             .setTitle(top.word[0].toUpperCase() + top.word.slice(1))
             .setURL(top.permalink)

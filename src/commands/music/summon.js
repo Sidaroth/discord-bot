@@ -6,8 +6,8 @@ export default {
     cooldown: 5,
     guildOnly: true,
     execute: async (message, args) => {
-        if (message.member.voiceChannel) {
-            message.member.voiceChannel.join().then((connection) => {
+        if (message.member.voice.channel) {
+            message.member.voice.channel.join().then((connection) => {
                 musicMan.setConnection(connection);
                 musicMan.playNext();
             }).catch(error => console.error(error));

@@ -22,7 +22,7 @@ const createTriviaSession = function createTriviaSessionFunc(channel, theme, own
     let lastMsg = 0;
 
     function printStatusEmbed() {
-        const embed = new Discord.RichEmbed();
+        const embed = new Discord.MessageEmbed();
         const resultStrings = [];
 
         participants.sort((a, b) => a.correct < b.correct); // Sort by descending order.

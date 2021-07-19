@@ -138,7 +138,7 @@ async function performQuery(message, server, character) {
     const guildString = guild ? `Member of ${guild.name} -` : 'Guildless on';
     const description = `${guildString} ${realm.name}`;
 
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
         .setColor(factionColor)
         .setTitle(`${fullName} (${ilvl}/${maxIlvl})`)
         .setDescription(description)

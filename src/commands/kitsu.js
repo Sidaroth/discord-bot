@@ -25,7 +25,7 @@ function formatSingleAnimeEmbed(data, id) {
     stats.push(`**Age rating:** ${data.ageRating} - ${data.ageRatingGuide}`);
     stats.push(`**Nsfw:** ${data.nsfw ? 'Yep!' : 'Nope'}`);
 
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
         .setColor('#00AE86')
         .setTitle(data.titles.ja_jp)
         .setDescription(trim(`**${data.titles.en_jp}**\n${data.synopsis}`, 1024))
@@ -92,7 +92,7 @@ function genreResponse(channel, args) {
                 return channel.send(`*${genre}* doesn't seem to be a valid genre/category. You can see the list of available genres here: https://kitsu.io/api/edge/genres?page[limit]=20`);
             }
 
-            const embed = new Discord.RichEmbed()
+            const embed = new Discord.MessageEmbed()
                 .setColor('#00AE86')
                 .setTitle(`The 10 highest rated anime in the ${genre} genre.`)
                 .setURL(`https://kitsu.io/explore/anime/category/${genreUrlified}`)
